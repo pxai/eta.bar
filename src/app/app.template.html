@@ -1,20 +1,4 @@
-<!--md-sidenav-layout class="webpack-starter" [class.m2app-dark]="isDarkTheme">
-  <md-toolbar color="primary">
-    <button md-icon-button [md-menu-trigger-for]="menu">
-      <md-icon>more_vert</md-icon>
-    </button>
-    <md-menu #menu="mdMenu">
-      <button md-menu-item [routerLink]=" ['./'] "> Index </button>
-      <button md-menu-item [routerLink]=" ['./home'] ">
-        <md-icon> home </md-icon>
-        <span> Home </span>
-      </button>
-      <button md-menu-item disabled> Disabled option </button>
-      <button md-raised-button color="warn" (click)="isDarkTheme = !isDarkTheme">TOGGLE THEME</button>
-    </md-menu>
 
-  </md-toolbar>
-</md-sidenav-layout-->
  <header>
    <nav>
       <a [routerLink]=" ['./']">
@@ -28,6 +12,7 @@
      <span  *ngIf="userData == ''" class="main-application">
           <button md-button (click)="login()">Login</button>
         </span>
+     <button md-raised-button color="warn" (click)="isDarkTheme = !isDarkTheme">TOGGLE THEME</button>
    </nav>
  </header>
   <main>

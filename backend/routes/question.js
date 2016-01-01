@@ -103,6 +103,66 @@ module.exports = function (app) {
           }
         });
 
+      });
+
+  app.post('/api/v1/question/anonymous/vote' ,function(req, res) {
+    var vote = new Vote({
+      user: req.session.login,
+      questionid: sanitize(req.body.questionid),
+      ip: req.ip,
+      answerid: sanitize(req.body.answerId)
+    });
+
+    Vote.count( {questionid: vote.questionid, user: vote.user},
+      function(err, count) {
+        if (count > 0) {
+          console.log('YOU HAVE VOTED!! ');
+          Vote.aggregate(
+            {$match: {questionid: vote.questionid}},
+            {$project: {answerid: 1, questionid:1, _id: 0}},
+            {$group: { _id:{answerid:"$answerid"}, count: {$sum:1} }},
+            {$sort: { answerid: 1}},
+            function (err, result) {
+              if (err) console.log('No data from votes: ' + err);
+              console.log(result);
+              res.send(result);
+            });
+
+        } else {
+          vote.validate(function (err) {
+            if (err) {
+              console.log(err);
+              console.log('Vote validation error! : ' + String(err));
+              res.send({title: "Vote", message: 'validation error in vote', "errors": err});
+            } else {
+              vote.save(function (err, message) {
+                if (err) {
+                  console.log('Vote not saved.');
+                  console.log(err);
+                  res.send({"msg": "Message not saved", "err": err});
+                  return;
+                }
+                console.log('Vote saved! ' + vote);
+                //question.type = "voted";
+
+                Vote.aggregate(
+                  {$match: {questionid: vote.questionid}},
+                  {$project: {answerid: 1, questionid:1, _id: 0}},
+                  {$group: { _id:{answerid:"$answerid"}, count: {$sum:1} }},
+                  {$sort: { answerid: 1}},
+                  function (err, result) {
+                    if (err) console.log('No data from votes: ' + err);
+                    console.log(result);
+                    res.send(result);
+                  });
+
+                //res.send(sample);
+              });
+            }
+          });
+        }
+      });
+
   });
 
     app.post('/api/v1/question/comment' ,function(req, res) {
