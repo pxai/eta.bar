@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title= t('app.name')
+    //title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    a(href='/')= t('app.home')
+    span= ' | '
+    a(href='/guestbook/')= t('app.name')
+    span= ' | '
+    a(href='?setLng=en')= 'en'
+    span= ' | '
+    a(href='?setLng=es')= 'es'
+    span= ' | '
+    a(href='/session/signin')= 'Sign In'
+    span= ' | '
+    a(href='/session/signout')= 'Sign Out'
+    block content

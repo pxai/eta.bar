@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    a(href='/')= 'Home my homie'
+    span= ' | '
+    a(href='/open')= 'Open page'
+    span= ' | '
+    a(href='/user')= 'Logged users page'
+    span= ' | '
+    a(href='/admin')= 'Logged Admin users page'
+    span= ' | '
+    a(href='/signin')= 'Sign In'
+    span= ' | '
+    a(href='/session/signout')= 'Sign Out'
+    p Epa
+    block content
+    p Content, #{session.id}
+      if session.name
+        span= 'Hello ' + session.name
+

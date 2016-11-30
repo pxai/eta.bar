@@ -1,0 +1,42 @@
+extends layout
+block content
+  h1= title
+  p= t('form-comment.welcome')
+  if (session.name)
+    span= 'Hello ' + session.name
+  form(method='post', action='/guestbook/')
+    div
+        label(for='message')= t('form-comment.message')
+    div
+        textarea#message(name='message')= message.message
+        if (errors && errors.errors.message)
+            span.error= t(errors.errors.message.message)
+    div
+        label(for ='name')= t('form-comment.name')
+    div
+        input#name(name='name' value=message.name)
+        if (errors && errors.errors.name)
+            span.error= t(errors.errors.name.message)
+    div
+        label(for ='age')= t('form-comment.age')
+    div
+        input#name(name='age' value=message.age)
+        if (errors && errors.errors.age)
+            span.error= t(errors.errors.age.message)
+    div
+        input(type='submit', value=t('form-comment.submit'))
+
+    h2 Messages so far
+    if messages
+        .messages
+        div
+            each msg in messages
+                div.gbmsg
+                    p= msg.message
+                    cite= msg.name
+                    span= ' '
+                    cite= msg.age
+                    span= ' '
+                    i= msg.date
+    else
+        None

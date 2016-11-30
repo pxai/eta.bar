@@ -1,0 +1,15 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    a(href='/')= 'Home my homie'
+    span= ' | '
+    a(href='/auth/local')= 'Sign locally'
+    span= ' | '
+    a(href='/auth/google')= 'Sign in with Google'
+    span= ' | '
+    a(href='/auth/facebook')= 'Sign in with Facebook'
+
+    block content

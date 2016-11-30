@@ -1,0 +1,18 @@
+<div class="app-content"s>
+  <h1 x-large class="sample-content">Home</h1>
+  <md-card color="primary" class="wide-card">
+    <md-card-title>{{this.question.question }}</md-card-title>
+    <md-card-content>
+      <p  *ngFor="let answer of this.question.answers">
+        <button id="submit-button" md-raised-button color="">{{ answer }}</button>
+      </p>
+      <hr>
+      <p>
+        <button id="new answer" md-raised-button color="happy">+ Add new answer</button>
+      </p>
+    </md-card-content>
+  </md-card>
+  <hr>
+
+
+</div>
