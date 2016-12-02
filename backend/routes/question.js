@@ -11,4 +11,12 @@ module.exports = function (app) {
         res.send(sample);
     });
 
+  app.post('/question/vote' ,function(req, res) {
+    /*var beat = new Beat({
+      fromUser: req.session.user,
+      to: sanitize(req.body.questioid),
+      text: sanitize(req.body.voteid)
+    });*/
+    res.send({"result": "ok"});
+  });
 }
