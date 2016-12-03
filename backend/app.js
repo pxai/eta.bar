@@ -52,6 +52,6 @@ routes(app);
 app.use(express.static('public'));
 
 // And there we go, listening on port 3000
-app.listen(3000, function () {
-    console.log('now listening on http://localhost:3000 ' + ' dirname: ' + __dirname);
+app.listen(3001, function () {
+    console.log('now listening on http://localhost:3001 ' + ' dirname: ' + __dirname);
 });

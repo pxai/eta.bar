@@ -1,4 +1,10 @@
 {
+  "_id": 1,
   "question": "What is the meaning of life",
-  "answers" : ["Nothing at all","42","Live and let live","Run for your life"]
+  "answers" : [
+      {"_id": 1, "answer": "Nothing at all"},
+      {"_id": 2, "answer":"42"},
+      {"_id": 3, "answer":"Live and let live"},
+      {"_id": 4, "answer":"Run for your life"}
+    ]
 }

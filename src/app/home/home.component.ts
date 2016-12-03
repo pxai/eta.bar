@@ -40,4 +40,8 @@ export class HomeComponent {
     this.appState.set('value', value);
     this.localState.value = '';
   }
+
+  voteFor(answer) {
+    console.log('You voted for ' + answer._id);
+  }
 }
