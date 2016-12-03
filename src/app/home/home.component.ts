@@ -23,6 +23,7 @@ import { XLarge } from './x-large';
 export class HomeComponent {
   // Set our default values
   localState = { value: '' };
+  public format: string = "normal";
   public question: Question;
   // TypeScript public modifiers
   constructor(public appState: AppState, public title: Title, public questionService: QuestionService) {
@@ -41,7 +42,8 @@ export class HomeComponent {
     this.localState.value = '';
   }
 
-  voteFor(answer) {
-    console.log('You voted for ' + answer._id);
+  voteFor(_id: number, answer) {
+    console.log('You voted for ' + _id+ ', answer: ' + answer._id);
+    this.questionService.getResult(_id, answer._id).subscribe(data => {this.question = data; this.format= 'voted'});
   }
 }

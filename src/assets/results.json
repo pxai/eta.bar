@@ -1,0 +1,10 @@
+{
+  "_id": 1,
+  "question": "What is the meaning of life",
+  "answers" : [
+      {"_id": 1, "answer": "Nothing at all", "votes":4},
+      {"_id": 2, "answer":"42", "votes":54},
+      {"_id": 3, "answer":"Live and let live", "votes":10},
+      {"_id": 4, "answer":"Run for your life", "votes":34}
+    ]
+}

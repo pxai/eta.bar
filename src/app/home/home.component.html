@@ -3,9 +3,16 @@
   <md-card color="primary" class="wide-card">
     <md-card-title>{{this.question.question }}</md-card-title>
     <md-card-content>
-      <p  *ngFor="let answer of this.question.answers">
-        <button id="submit-button" md-raised-button color="" (click)="voteFor(answer)">{{ answer.answer }}</button>
-      </p>
+      <div class='panel panel-info' *ngIf="format == 'normal'">
+        <p  *ngFor="let answer of this.question.answers">
+          <button id="submit-button" md-raised-button color="" (click)="voteFor(this.question._id,answer)">{{ answer.answer }}</button>
+        </p>
+      </div>
+      <div class='panel panel-info' *ngIf="format != 'normal'">
+        <p  *ngFor="let answer of this.question.answers">
+          <a  id="submit-button" md-raised-button color="" (click)="voteFor(this.question._id,answer)">{{ answer.answer }} : {{ answer.votes }}</a>
+        </p>
+      </div>
       <hr>
       <p>
         <button id="new answer" md-raised-button color="happy">+ Add new answer</button>
@@ -13,6 +20,9 @@
     </md-card-content>
   </md-card>
   <hr>
+  <div><b>This is a switch sample</b>
+    {{format}} (Try with Eugene, Squidward or any...)
 
+  </div>
 
 </div>
