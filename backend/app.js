@@ -49,7 +49,7 @@ middleware(app);
 routes(app);
 
 // We set static content
-app.use(express.static('public'));
+app.use(express.static('../dist'));
 
 // And there we go, listening on port 3000
 app.listen(3001, function () {
