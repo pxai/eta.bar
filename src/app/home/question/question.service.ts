@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import {Headers} from "@angular/http";
+import {Headers} from '@angular/http';
+import { StoreHelper } from '../store-helper';
 
 @Injectable()
 export class QuestionService {
@@ -16,9 +17,10 @@ export class QuestionService {
       {"_id": 4, "answer":"Run for your life", "votes": 16}
     ]
   }];
+
   private questionGetUrl : string = '/api/v1/question/last';
   private resultGetUrl : string = '/api/v1/question/vote';
-  constructor(public http: Http) {
+  constructor(private http: Http,  private storeHelper: StoreHelper) {
 
   }
 
@@ -26,8 +28,9 @@ export class QuestionService {
     console.log('Title#getData(): Get Latest from back-end');
     // this.question = new Question('What is the meaning of life',['Nothing at all','42','Live and let live','Run for your life']);
 
-     return this.http.get(this.questionGetUrl)
+     /*return this.http.get(this.questionGetUrl)
                                .map(res => res.json());
+*/
 
     //return this.mockQuestions[0].map(res => res.json());
 
