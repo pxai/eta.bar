@@ -21,8 +21,11 @@ import { AuthService } from './auth';
 import { StoreHelper } from './store-helper';
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
+import { CreateComponent } from './create';
+import { AuthComponent } from './auth/index.ts';
 import { MissingPageComponent } from './missing-page';
 import { XLarge } from './home/x-large';
+import { OAuthService } from 'angular2-oauth2/oauth-service';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -30,7 +33,8 @@ const APP_PROVIDERS = [
   AppState,
   Store,
   StoreHelper,
-  AuthService
+  AuthService,
+  OAuthService
 ];
 
 type StoreType = {
@@ -48,6 +52,8 @@ type StoreType = {
     AppComponent,
     AboutComponent,
     HomeComponent,
+    CreateComponent,
+    AuthComponent,
     MissingPageComponent,
     XLarge
   ],
