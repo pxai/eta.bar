@@ -2,7 +2,7 @@
  * Created by PELLO_ALTADILL on 04/12/2016.
  */
 import { Injectable } from '@angular/core';
-import { Store } from '../app.store';
+import { Store } from './app.store';
 
 // Use this Store from services
 @Injectable()

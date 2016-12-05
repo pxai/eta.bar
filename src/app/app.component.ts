@@ -4,6 +4,8 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
 import { AppState } from './app.service';
+import { Store } from './app.store';
+import { StoreHelper } from './store-helper';
 
 /*
  * App Component
@@ -27,12 +29,15 @@ export class AppComponent {
   isDarkTheme: boolean = false;
 
   constructor(
-    public appState: AppState) {
+    public appState: AppState,
+    public storeHelper: StoreHelper,
+    public store: Store) {
 
   }
 
   ngOnInit() {
     console.log('Initial App State', this.appState.state);
+    console.log('Initial App Store State', this.store.getState());
   }
 
 }
