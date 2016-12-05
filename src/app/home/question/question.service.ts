@@ -18,8 +18,8 @@ export class QuestionService {
     ]
   }];
 
-  private questionGetUrl : string = '/assets/question.json';
-  //private questionGetUrl : string = '/api/v1/question/last';
+  //private questionGetUrl : string = '/assets/question.json';
+  private questionGetUrl : string = '/api/v1/question/last';
   private resultGetUrl : string = '/api/v1/question/vote';
 
   constructor(private http: Http, storeHelper: StoreHelper) {
@@ -28,19 +28,8 @@ export class QuestionService {
 
   public getLatest() {
     console.log('Title#getData(): Get Latest from back-end');
-    // this.question = new Question('What is the meaning of life',['Nothing at all','42','Live and let live','Run for your life']);
-
      return this.http.get(this.questionGetUrl)
                                .map(res => res.json());
-
-
-    //return this.mockQuestions[0].map(res => res.json());
-
-    /*return {
-      _id: 1,
-      question: 'AngularClass',
-      answers : ['Nothing at all','42','Live and let live','Run for your life']
-    };*/
   }
 
   public getResult(_id: number, _idAnswer: number) {

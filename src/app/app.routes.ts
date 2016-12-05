@@ -1,6 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
+import { AuthService } from './auth';
 import { MissingPageComponent } from './missing-page';
 
 import { DataResolver } from './app.resolver';
@@ -13,6 +14,7 @@ export const ROUTES: Routes = [
   {
     path: 'create', loadChildren: () => System.import('./create') // Loads asynchronously
       .then((comp: any) => comp.default),
+      canActivate: [AuthService]
   },
   { path: '**',    component: MissingPageComponent },
 ];
