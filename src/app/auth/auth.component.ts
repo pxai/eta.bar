@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { OAuthService } from 'angular2-oauth2/oauth-service';
 
 
 // Google's login API namespace
@@ -15,28 +16,40 @@ export class AuthComponent {
   userDisplayName = "empty";
   localState: any;
 
-  constructor(public route: ActivatedRoute) {
+  constructor(public route: ActivatedRoute, private oauthService: OAuthService) {
+
+    this.oauthService.loginUrl = "https://accounts.google.com/o/oauth2/v2/auth"; //Id-Provider?
+    this.oauthService.redirectUri = window.location.origin + "/index.html";
+    this.oauthService.clientId = " 615208896962-m7ete2bdf60trg5a90ar1daus4ebl014.apps.googleusercontent.com";
+    this.oauthService.scope = "openid profile email";
+    this.oauthService.issuer = "https://accounts.google.com";
+    this.oauthService.oidc = true;
+    this.oauthService.setStorage(sessionStorage);
+
+    this.oauthService.tryLogin({});
     console.log(this);
   }
 
-  // Angular hook that allows for interaction with elements inserted by the
-  // rendering of a view.
-  ngAfterViewInit() {
-    // Converts the Google login button stub to an actual button.
-   gapi.signin2.render(
-      this.googleLoginButtonId,
-      {
-        "onSuccess": this.onGoogleLoginSuccess,
-        "scope": "profile",
-        "theme": "dark"
-      });
+  get userName() {
+    var claims = this.oauthService.getIdentityClaims();
+
+    if (!claims) return "claim false";
+    console.debug(this.oauthService.getIdentityClaims());
+    console.log("Given name: " + claims.userName + ","  + claims.given_name);
+    console.log(this.oauthService.getAccessToken());
+    return claims.given_name;
   }
 
-  // Triggered after a user successfully logs in using the Google external
-  // login provider.
-  onGoogleLoginSuccess(loggedInUser) {
-    this.userAuthToken = loggedInUser.getAuthResponse().id_token;
-    this.userDisplayName = loggedInUser.getBasicProfile().getName();
-    console.log(this);
+  login() {
+
+    console.log(this.userName);
+    console.log("Given name: " + this.userName + ", ok");
+    this.oauthService.initImplicitFlow();
   }
+
+  logoff() {
+    this.oauthService.logOut();
+  }
+
+
 }

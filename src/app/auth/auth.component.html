@@ -4,10 +4,11 @@
   <md-card-content>
     <div class="login-wrapper">
       <p>You need to log in.</p>
-      <div id="{{ googleLoginButtonId }}"></div>
+      <button (click)="login()">Login</button>
     </div>
-    <div class="main-application">
-      <p>Hello, {{ userDisplayName }}!</p>
+
+    <div  *ngIf="userName != null" class="main-application">
+      <p>Hello, {{ userName }}!</p>
     </div>
   </md-card-content>
 
