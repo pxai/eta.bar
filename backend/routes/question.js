@@ -27,11 +27,12 @@ module.exports = function (app) {
 
   app.post('/api/v1/question/vote' ,function(req, res) {
     var vote = new Vote({
-        userid: { type: ObjectId, required: true, trim: true},
-        questionid: sanitize(req.body.answerid),
-        ip: { type: String, required: true, trim: true },
-        answerid: sanitize(req.body.answerid)
+        userid: (req.session.userid || 1),
+        questionid: sanitize(req.body.questionid),
+        ip: req.ip,
+        answerid: sanitize(req.body.answerId)
       });
+
 
     vote.validate(function (err) {
       if (err) {
@@ -41,7 +42,9 @@ module.exports = function (app) {
       } else {
         vote.save(function (err, message) {
           if (err) {
-            res.send('{"msg":"Message not saved"}');
+            console.log('Vote not saved.');
+            console.log(err);
+            res.send({"msg":"Message not saved", "err": err});
             return;
           }
           console.log('Saving: ' + vote);

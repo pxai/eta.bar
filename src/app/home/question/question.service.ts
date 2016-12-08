@@ -32,11 +32,11 @@ export class QuestionService {
                                .map(res => res.json());
   }
 
-  public getResult(_id: number, _idAnswer: number) {
+  public getResult(id: number, answerId: number) {
     console.log('Title#getData(): Get Latest from back-end');
     //var headers = new Headers();
     //headers.append('Content-type','application/json');
-    return this.http.post(this.resultGetUrl,JSON.stringify({_id: _id, _idAnswer: _idAnswer}))
+    return this.http.post(this.resultGetUrl,{questionid: id, answerId: answerId})
       .map(res => res.json());
 
   }

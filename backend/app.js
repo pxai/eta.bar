@@ -26,7 +26,7 @@ app.set('view engine', 'pug');
 
 //app.set('');
 // If we want to use post data:
-app.use(bodyParser({extended: true}));
+app.use(bodyParser.json());
 
 
 // For session data:
