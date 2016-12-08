@@ -3,9 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { OAuthService } from 'angular2-oauth2/oauth-service';
 
 
-// Google's login API namespace
-declare var gapi:any;
-
 @Component({
   selector: 'auth',
   templateUrl: './auth.component.html'
@@ -20,13 +17,21 @@ export class AuthComponent {
 
     this.oauthService.loginUrl = "https://accounts.google.com/o/oauth2/v2/auth"; //Id-Provider?
     this.oauthService.redirectUri = window.location.origin + "/index.html";
-    this.oauthService.clientId = " 615208896962-m7ete2bdf60trg5a90ar1daus4ebl014.apps.googleusercontent.com";
+    this.oauthService.clientId = "615208896962-m7ete2bdf60trg5a90ar1daus4ebl014.apps.googleusercontent.com";
     this.oauthService.scope = "openid profile email";
     this.oauthService.issuer = "https://accounts.google.com";
     this.oauthService.oidc = true;
     this.oauthService.setStorage(sessionStorage);
 
-    this.oauthService.tryLogin({});
+    this.oauthService.tryLogin({
+      onTokenReceived: context => {
+      //
+      // Output just for purpose of demonstration
+      // Don't try this at home ... ;-)
+      //
+      console.log("logged in");
+      console.log(context);
+    }});
     console.log(this);
   }
 
@@ -34,9 +39,10 @@ export class AuthComponent {
     var claims = this.oauthService.getIdentityClaims();
 
     if (!claims) return "claim false";
-    console.debug(this.oauthService.getIdentityClaims());
     console.log("Given name: " + claims.userName + ","  + claims.given_name);
     console.log(this.oauthService.getAccessToken());
+    console.log(this.oauthService.getIdentityClaims());
+
     return claims.given_name;
   }
 

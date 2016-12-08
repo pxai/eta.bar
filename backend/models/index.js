@@ -10,3 +10,6 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/blog');
 
 exports.User = require('./user');
+exports.Vote = require('./vote');
+exports.Question = require('./question');
+exports.Comment = require('./comment');

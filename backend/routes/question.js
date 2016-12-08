@@ -3,6 +3,9 @@
  * The question related page
  * Pello Altadill - http://pello.io
  */
+var mongoose = require('mongoose');
+var Vote = mongoose.model('Vote');
+var sanitize = require('../helpers/sanitize');
 var isloggedin = require('../middleware/isloggedin');
 var sample = {
   "_id": 1,
@@ -23,12 +26,31 @@ module.exports = function (app) {
     });
 
   app.post('/api/v1/question/vote' ,function(req, res) {
-    /*var beat = new Beat({
-      fromUser: req.session.user,
-      to: sanitize(req.body.questioid),
-      text: sanitize(req.body.voteid)
-    });*/
-    sample.type = "voted";
-    res.send(sample);
+    var vote = new Vote({
+        userid: { type: ObjectId, required: true, trim: true},
+        questionid: sanitize(req.body.answerid),
+        ip: { type: String, required: true, trim: true },
+        answerid: sanitize(req.body.answerid)
+      });
+
+    vote.validate(function (err) {
+      if (err) {
+        console.log(err);
+        console.log('Validation error! : ' + String(err));
+        res.send({title: "Vote", message: 'validation error in vote', "errors": err});
+      } else {
+        vote.save(function (err, message) {
+          if (err) {
+            res.send('{"msg":"Message not saved"}');
+            return;
+          }
+          console.log('Saving: ' + vote);
+          sample.type = "voted";
+          res.send(sample);
+        });
+      }
+    });
+
+
   });
 }
