@@ -11,7 +11,7 @@ var mongoose = require('mongoose');
 
 var schema = mongoose.Schema({
     userid: { type: String, lowercase: true, trim: true},
-    name: { first: String, last: String },
+    name: { type: String, required: true},
     salt: { type: String, required: true },
     hash: { type: String, required: true },
   	provider		: String, // Cuenta del usuario (Twitter o Facebook en este ejemplo)
@@ -19,9 +19,6 @@ var schema = mongoose.Schema({
 	photo			 : String, // Avatar o foto del usuario
  	createdAt	 : {type: Date, default: Date.now} // Fecha de creación
 });
-
-// add created date property
-//schema.plugin(createdDate);
 
 // properties that do not get saved to the db
 schema.virtual('fullname').get(function () {

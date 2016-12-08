@@ -6,10 +6,10 @@
  * Pello Altadill - http://pello.info
  */
 var mongoose = require('mongoose');
-
+var Schema = mongoose.Schema;
 
 var schema = mongoose.Schema({
-    userid: { type: String, required: true, trim: true},
+    user: { type: Object, required: true},
     questionid: { type: String, required: true, trim: true },
     ip: { type: String, required: true, trim: true },
     text: { type: String, required: true, trim: true},

@@ -7,7 +7,7 @@
  * Pello Altadill - http://pello.info
  */
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/blog');
+mongoose.connect('mongodb://localhost/etabar');
 
 exports.User = require('./user');
 exports.Vote = require('./vote');

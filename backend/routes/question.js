@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose');
 var Vote = mongoose.model('Vote');
+var User = mongoose.model('User');
 var sanitize = require('../helpers/sanitize');
 var isloggedin = require('../middleware/isloggedin');
 var sample = {
@@ -18,16 +19,18 @@ var sample = {
     {"_id": 4, "answer":"Run for your life", "votes": 16}
   ]
 };
+var anonymousUser = new User({userid: "1", name: 'Sample', salt : 'Salty salt', hash: 'superbhash', provider: 'myself', provider_id: "1"});
 module.exports = function (app) {
 
     app.get('/api/v1/question/last' ,function(req, res) {
+      req.session.user =  !req.session.user?anonymousUser:req.session.user;
         sample.type = "normal";
         res.send(sample);
     });
 
   app.post('/api/v1/question/vote' ,function(req, res) {
     var vote = new Vote({
-        userid: (req.session.userid || 1),
+        user: req.session.user,
         questionid: sanitize(req.body.questionid),
         ip: req.ip,
         answerid: sanitize(req.body.answerId)

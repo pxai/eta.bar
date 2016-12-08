@@ -9,7 +9,7 @@ var mongoose = require('mongoose');
 
 
 var schema = mongoose.Schema({
-    userid: { type: String, required: true, trim: true},
+    user: { type: String, ref: 'User' },
     questionid: { type: String, required: true, trim: true },
     ip: { type: String, required: true, trim: true },
     answerid: { type: String, required: true, trim: true},

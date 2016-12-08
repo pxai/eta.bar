@@ -6,6 +6,8 @@
  * Pello Altadill - http://pello.info
  */
 var mongoose = require('mongoose');
+var vote = require('./vote');
+
 
 var schema = mongoose.Schema({
     question: { type: String, required: true, trim: true},
@@ -14,8 +16,8 @@ var schema = mongoose.Schema({
      {
        answerid: {type: Number},
        answer: { type: String, required: true, trim: true},
-       votes: {type: Number},
-       userid: { type: String }
+       votes: [vote],
+       user: { type: Object }
      }
     ],
  	createdAt	 : {type: Date, default: Date.now} // Fecha de creación
