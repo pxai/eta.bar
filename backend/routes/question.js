@@ -29,7 +29,7 @@ module.exports = function (app) {
     });
 
   app.post('/api/v1/question/vote' ,function(req, res) {
-    var vote = new Vote({
+      var vote = new Vote({
         user: req.session.user,
         questionid: sanitize(req.body.questionid),
         ip: req.ip,
@@ -37,26 +37,54 @@ module.exports = function (app) {
       });
 
 
-    vote.validate(function (err) {
-      if (err) {
-        console.log(err);
-        console.log('Validation error! : ' + String(err));
-        res.send({title: "Vote", message: 'validation error in vote', "errors": err});
-      } else {
-        vote.save(function (err, message) {
-          if (err) {
-            console.log('Vote not saved.');
-            console.log(err);
-            res.send({"msg":"Message not saved", "err": err});
-            return;
-          }
-          console.log('Saving: ' + vote);
-          sample.type = "voted";
-          res.send(sample);
-        });
-      }
-    });
+      vote.validate(function (err) {
+        if (err) {
+          console.log(err);
+          console.log('Vote validation error! : ' + String(err));
+          res.send({title: "Vote", message: 'validation error in vote', "errors": err});
+        } else {
+          vote.save(function (err, message) {
+            if (err) {
+              console.log('Vote not saved.');
+              console.log(err);
+              res.send({"msg": "Message not saved", "err": err});
+              return;
+            }
+            console.log('Saving: ' + vote);
+            sample.type = "voted";
+            res.send(sample);
+          });
+        }
+      });
+  });
 
+    app.post('/api/v1/question/comment' ,function(req, res) {
+      var comment = new Comment({
+        user: req.session.user,
+        questionid: sanitize(req.body.questionid),
+        ip: req.ip,
+        text: sanitize(req.body.text),
+        fatherComment: sanitize(req.body.fatherComment || '0'),
+        answerid: sanitize(req.body.answerId)
+      });
 
+      comment.validate(function (err) {
+        if (err) {
+          console.log(err);
+          console.log('Comment Validation error! : ' + String(err));
+          res.send({title: "Vote", message: 'validation error in comment', "errors": err});
+        } else {
+          comment.save(function (err, message) {
+            if (err) {
+              console.log('Comment not saved.');
+              console.log(err);
+              res.send({"msg":"Comment not saved", "err": err});
+              return;
+            }
+            console.log('Saving: ' + vote);
+            res.send(comment);
+          });
+        }
+      });
   });
 }

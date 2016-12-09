@@ -1,0 +1,29 @@
+<h3>Comments</h3>
+<md-card class="wide-card">
+  <md-card-subtitle>Please Sign In</md-card-subtitle>
+  <md-card-content>
+    <div class="login-wrapper">
+      <p>You need to log in.</p>
+      <button (click)="login()">Login</button>
+    </div>
+
+    <div  *ngIf="userName != null" class="main-application">
+      <form (ngSubmit)="submitComment()" autocomplete="off">
+
+        <md-input
+          [value]="text"
+          placeholder="Submit Local State to App State"
+          autofocus></md-input>
+
+        <button id="submit-button" md-raised-button color="accent">Submit Value</button>
+      </form>
+    </div>
+  </md-card-content>
+
+</md-card>
+<hr>
+<md-card>
+  <md-card-subtitle><strong>Technologies used:</strong>
+    Angular2 with TS + Node.js + Express + MongoDB
+</md-card-subtitle>
+</md-card>
