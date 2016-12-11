@@ -50,25 +50,6 @@ export class HomeComponent {
     this.questionService.getResult(_id, answer._id).subscribe(data => {this.question = data; this.format= 'voted'});
   }
 
-  get userName() {
-    var claims = this.oauthService.getIdentityClaims();
 
-    if (!claims) return "claim false";
-    console.log("Given name: " + claims.userName + ","  + claims.given_name);
-    console.log(this.oauthService.getAccessToken());
-    console.log(this.oauthService.getIdentityClaims());
-
-    return claims.given_name;
-  }
-
-  login() {
-    console.log(this.userName);
-    console.log("Given name: " + this.userName + ", ok");
-    this.oauthService.initImplicitFlow();
-  }
-
-  logoff() {
-    this.oauthService.logOut();
-  }
 
 }

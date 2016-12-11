@@ -22,10 +22,13 @@
           Create
         </button>
 
-        <button md-button (click)="login()">
-          Sign in
-        </button>
-
+        <span  *ngIf="userName != ''" class="main-application">
+            <i>Hello, {{ userName }}!</i>
+          <button md-button (click)="logout()">Logout</button>
+        </span>
+        <span  *ngIf="userName == ''" class="main-application">
+          <button md-button (click)="login()">Login</button>
+        </span>
       <!-- button md-raised-button color="warn" (click)="isDarkTheme = !isDarkTheme">TOGGLE THEME</button -->
       </span>
   </md-toolbar>

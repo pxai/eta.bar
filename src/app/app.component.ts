@@ -64,5 +64,25 @@ console.log(this);
     console.log('Initial App Store State', this.store.getState());
   }
 
+  get userName() {
+    var claims = this.oauthService.getIdentityClaims();
+
+    if (!claims) return "";
+    console.log("Given name: " + claims.userName + ","  + claims.given_name);
+    console.log(this.oauthService.getAccessToken());
+    console.log(this.oauthService.getIdentityClaims());
+
+    return claims.given_name;
+  }
+
+  login() {
+    console.log(this.userName);
+    console.log("Given name: " + this.userName + ", ok");
+    this.oauthService.initImplicitFlow();
+  }
+
+  logout() {
+    this.oauthService.logOut();
+  }
 }
 
