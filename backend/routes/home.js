@@ -8,9 +8,10 @@ var isloggedin = require('../middleware/isloggedin');
 
 module.exports = function (app) {
 
-    app.get('/home', function(req, res) {
-        res.render('index' , {title: 'Home page'});
-    });
+   /* app.get('/auth', function(req, res) {
+      return res.redirect('/#/create');
+      next();
+    });*/
 
    // only for logged users
     app.get('/user',  isloggedin ,function(req, res) {

@@ -21,9 +21,11 @@
         <button color="accent" md-raised-button [routerLink]=" ['./create'] ">
           Create
         </button>
-        <button md-button [routerLink]=" ['./about'] ">
-          About
+
+        <button md-button (click)="login()">
+          Sign in
         </button>
+
       <!-- button md-raised-button color="warn" (click)="isDarkTheme = !isDarkTheme">TOGGLE THEME</button -->
       </span>
   </md-toolbar>
@@ -32,6 +34,6 @@
     <router-outlet></router-outlet>
   </main>
   <footer>
-    <span>eta.bar by <a [href]="url">@pelloxabier</a></span>
+    <span><a [routerLink]="['./about']">about</a> eta.bar by <a [href]="url">@pelloxabier</a></span>
   </footer>
 </md-sidenav-layout>

@@ -2,6 +2,8 @@
  * Angular 2 decorators and services
  */
 import { Component, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { OAuthService } from 'angular2-oauth2/oauth-service';
 
 //import { AppState } from './app.service';
 import { Store } from './app.store';
@@ -31,7 +33,29 @@ export class AppComponent {
   constructor(
    // public appState: AppState,
     public storeHelper: StoreHelper,
-    public store: Store) {
+    public store: Store,
+    public route: ActivatedRoute,
+    private oauthService: OAuthService) {
+
+  this.oauthService.loginUrl = "https://accounts.google.com/o/oauth2/v2/auth"; //Id-Provider?
+  this.oauthService.redirectUri = window.location.origin + "";
+  this.oauthService.clientId = "615208896962-m7ete2bdf60trg5a90ar1daus4ebl014.apps.googleusercontent.com";
+  this.oauthService.scope = "openid profile email";
+  this.oauthService.issuer = "https://accounts.google.com";
+  this.oauthService.oidc = true;
+  this.oauthService.setStorage(sessionStorage);
+
+  // https://console.developers.google.com/apis/credentials/oauthclient/clientId?project=clientId.projectnumb
+  this.oauthService.tryLogin({
+  onTokenReceived: context => {
+  //
+  // Output just for purpose of demonstration
+  // Don't try this at home ... ;-)
+  //
+  console.log("logged in");
+  console.log(context);
+}});
+console.log(this);
 
   }
 

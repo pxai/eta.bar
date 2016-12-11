@@ -16,7 +16,7 @@ export class AuthComponent {
   constructor(public route: ActivatedRoute, private oauthService: OAuthService) {
 
     this.oauthService.loginUrl = "https://accounts.google.com/o/oauth2/v2/auth"; //Id-Provider?
-    this.oauthService.redirectUri = window.location.origin + "/about";
+    this.oauthService.redirectUri = window.location.origin + "/auth";
     this.oauthService.clientId = "615208896962-m7ete2bdf60trg5a90ar1daus4ebl014.apps.googleusercontent.com";
     this.oauthService.scope = "openid profile email";
     this.oauthService.issuer = "https://accounts.google.com";

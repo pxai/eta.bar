@@ -12,12 +12,13 @@ import { DataResolver } from './app.resolver';
 export const ROUTES: Routes = [
   { path: '',      component: HomeComponent },
   { path: 'home',  component: HomeComponent },
+  { path: 'state',    component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'create', component: CreateComponent, canActivate: [AuthService] },
-  { path: 'auth', component: AuthComponent}
+  { path: 'auth', component: AuthComponent},
   // {
  //   path: 'create', loadChildren: () => System.import('./create') // Loads asynchronously
  //     .then((comp: any) => comp.default)
  // },
-  //{ path: '**',    component: MissingPageComponent },
+  { path: '**',    component: MissingPageComponent },
 ];

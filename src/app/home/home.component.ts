@@ -4,6 +4,7 @@ import { AppState } from '../app.service';
 import { Title } from './title';
 import { QuestionService } from './question';
 import { XLarge } from './x-large';
+import { OAuthService } from 'angular2-oauth2/oauth-service';
 
 @Component({
   // The selector is what angular internally uses
@@ -25,9 +26,11 @@ export class HomeComponent {
   localState = { value: '' };
   public format: string = "normal";
   public question: Question;
-  // TypeScript public modifiers
-  constructor(public appState: AppState, public title: Title, public questionService: QuestionService) {
 
+  // TypeScript public modifiers
+  constructor(public appState: AppState, public title: Title,
+              public questionService: QuestionService,
+              private oauthService: OAuthService) {
   }
 
   ngOnInit() {
@@ -46,4 +49,26 @@ export class HomeComponent {
     console.log('You voted for ' + _id+ ', answer: ' + answer._id);
     this.questionService.getResult(_id, answer._id).subscribe(data => {this.question = data; this.format= 'voted'});
   }
+
+  get userName() {
+    var claims = this.oauthService.getIdentityClaims();
+
+    if (!claims) return "claim false";
+    console.log("Given name: " + claims.userName + ","  + claims.given_name);
+    console.log(this.oauthService.getAccessToken());
+    console.log(this.oauthService.getIdentityClaims());
+
+    return claims.given_name;
+  }
+
+  login() {
+    console.log(this.userName);
+    console.log("Given name: " + this.userName + ", ok");
+    this.oauthService.initImplicitFlow();
+  }
+
+  logoff() {
+    this.oauthService.logOut();
+  }
+
 }
