@@ -4,13 +4,16 @@
 import { Injectable } from '@angular/core';
 import { Store } from './app.store';
 
-// Use this Store from services
+// Use this Store from services,
+// this is like a Proxy for our state Store
 @Injectable()
 export class StoreHelper {
   constructor(private store: Store) {}
 
   update(prop, state) {
     const currentState = this.store.getState();
+    console.log('In Store Helper');
+    console.log(state);
     this.store.setState(Object.assign({}, currentState, { [prop]: state }));
   }
 

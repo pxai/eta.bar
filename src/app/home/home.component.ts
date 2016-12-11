@@ -5,6 +5,7 @@ import { Title } from './title';
 import { QuestionService } from './question';
 import { XLarge } from './x-large';
 import { OAuthService } from 'angular2-oauth2/oauth-service';
+import { Store } from '../app.store';
 
 @Component({
   // The selector is what angular internally uses
@@ -30,13 +31,23 @@ export class HomeComponent {
   // TypeScript public modifiers
   constructor(public appState: AppState, public title: Title,
               public questionService: QuestionService,
+              private store: Store,
               private oauthService: OAuthService) {
   }
 
   ngOnInit() {
     this.question = new Question();
     console.log('hello `Home` component');
-    this.questionService.getLatest().subscribe(data => this.question = data);
+    // Without store
+    // this.questionService.getLatest().subscribe(data => this.question = data);
+
+    // We get the latests and we just subscribe
+    this.questionService.getLatest().subscribe();
+
+    // subscribe to the store, so other operations just need to subscribe
+    this.store.changes //.pluck('question')
+      //.map((data: any) => data)
+      .subscribe((data: any) =>  { console.log('Home comoponent');console.log(data.question);this.question = data.question;});
   }
 
   submitState(value: string) {
@@ -47,7 +58,7 @@ export class HomeComponent {
 
   voteFor(_id: number, answer) {
     console.log('You voted for ' + _id+ ', answer: ' + answer._id);
-    this.questionService.getResult(_id, answer._id).subscribe(data => {this.question = data; this.format= 'voted'});
+    this.questionService.getResult(_id, answer._id).subscribe(data => {this.question = data.question; this.format= 'voted'});
   }
 
 

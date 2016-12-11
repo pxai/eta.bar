@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import {Headers} from '@angular/http';
 import { StoreHelper } from '../../store-helper';
+import 'rxjs/Rx';
 
 @Injectable()
 export class QuestionService {
@@ -22,14 +23,20 @@ export class QuestionService {
   private questionGetUrl : string = '/api/v1/question/last';
   private resultGetUrl : string = '/api/v1/question/vote';
 
-  constructor(private http: Http, storeHelper: StoreHelper) {
+  constructor(private http: Http, private storeHelper: StoreHelper) {
 
   }
 
   public getLatest() {
     console.log('Title#getData(): Get Latest from back-end');
+    // We add the method to save question in the store.
+    // The operation is immutable for data
      return this.http.get(this.questionGetUrl)
-                               .map(res => res.json());
+                                .map(res => res.json())
+                                .do( (question: any) => {
+                                    this.storeHelper.update('question', question);
+                                    console.log('Service: ');console.log(question);
+                                                          });
   }
 
   public getResult(id: number, answerId: number) {
@@ -40,5 +47,11 @@ export class QuestionService {
       .map(res => res.json());
 
   }
+
+  /*
+  * when creating
+  * ...post()
+  *     .do(savedAnswer => this.storeHelper.add('answers', savedAnswer))
+   */
 
 }

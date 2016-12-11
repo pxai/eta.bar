@@ -27,12 +27,15 @@ export interface Question {
 
 // This is an interface of how our state will look like
 export interface State {
-  questions: Array<Question>
+  question: Question
+  session: {}
 }
 
 // This is  the state that application is gonna start with
+// The : State gives some type safety
 const defaultState: State = {
-  questions: []
+  question : {_id: 0, question: "", answers: [], comments:[]},
+  session: {}
 }
 
 // This is the actual store
@@ -42,6 +45,10 @@ const _store = new BehaviorSubject<State>(defaultState);
 @Injectable()
 export class Store {
   private store = _store;
+  // We subscribe the components to this
+
+  // this will ensure that all states changes are immutable
+  // we can reasen about date easier and add optimizations
   changes = this.store.asObservable().distinctUntilChanged()
 
   setState(state: State) {
