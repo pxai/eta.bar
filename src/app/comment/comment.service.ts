@@ -6,37 +6,26 @@ import { StoreHelper } from '../store-helper';
 @Injectable()
 export class CommentService {
   value = 'Angular 2';
-  private mockQuestions = [{
-    "_id": 1,
-    "question": "What is the meaning of life",
-    "type": "normal",
-    "answers" : [
-      {"_id": 1, "answer": "Nothing at all", "votes": 31},
-      {"_id": 2, "answer":"42", "votes": 3},
-      {"_id": 3, "answer":"Live and let live", "votes": 11},
-      {"_id": 4, "answer":"Run for your life", "votes": 16}
-    ]
-  }];
 
   //private questionGetUrl : string = '/assets/question.json';
-  private questionGetUrl : string = '/api/v1/question/last';
-  private resultGetUrl : string = '/api/v1/question/vote';
+  private commentsGetUrl : string = '/api/v1/comments/last/';
+  private commentCreateUrl : string = '/api/v1/comments/create';
 
   constructor(private http: Http, storeHelper: StoreHelper) {
 
   }
 
-  public getLatest() {
+  public getLatest(id: string) {
     console.log('Title#getData(): Get Latest from back-end');
-     return this.http.get(this.questionGetUrl)
+     return this.http.get(this.commentsGetUrl+id)
                                .map(res => res.json());
   }
 
-  public getResult(id: number, answerId: number) {
+  public createComment () {
     console.log('Title#getData(): Get Latest from back-end');
-    //var headers = new Headers();
-    //headers.append('Content-type','application/json');
-    return this.http.post(this.resultGetUrl,{questionid: id, answerId: answerId})
+    var headers = new Headers();
+    headers.append('Content-type','application/json');
+    return this.http.post(this.commentCreateUrl, headers)
       .map(res => res.json());
 
   }

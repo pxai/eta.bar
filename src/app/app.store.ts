@@ -59,6 +59,7 @@ export class Store {
     return this.store.value;
   }
 
+
   purge() {
     this.store.next(defaultState);
   }

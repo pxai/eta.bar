@@ -2,12 +2,7 @@
 <md-card class="wide-card">
   <md-card-subtitle>Please Sign In</md-card-subtitle>
   <md-card-content>
-    <div class="login-wrapper">
-      <p>You need to log in.</p>
-      <button (click)="login()">Login</button>
-    </div>
-
-    <div  *ngIf="userName != null" class="main-application">
+    <div  *ngIf="session.given_name != null" class="main-application">
       <form (ngSubmit)="submitComment()" autocomplete="off">
 
         <md-input
@@ -15,7 +10,7 @@
           placeholder="Submit Local State to App State"
           autofocus></md-input>
 
-        <button id="submit-button" md-raised-button color="accent">Submit Value</button>
+        <button id="submit-button" md-raised-button color="accent">Send comment, {{ session.given_name }}</button>
       </form>
     </div>
   </md-card-content>

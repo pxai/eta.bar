@@ -8,7 +8,7 @@ import { Store } from './app.store';
 // this is like a Proxy for our state Store
 @Injectable()
 export class StoreHelper {
-  constructor(private store: Store) {}
+  constructor(public store: Store) {}
 
   update(prop, state) {
     const currentState = this.store.getState();

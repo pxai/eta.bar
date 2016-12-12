@@ -68,6 +68,7 @@ console.log(this);
     var claims = this.oauthService.getIdentityClaims();
 
     if (!claims) return "";
+    this.storeHelper.update('session', claims);
     console.log("Given name: " + claims.userName + ","  + claims.given_name);
     console.log(this.oauthService.getAccessToken());
     console.log(this.oauthService.getIdentityClaims());
@@ -83,6 +84,7 @@ console.log(this);
 
   logout() {
     this.oauthService.logOut();
+    this.store.purge();
   }
 }
 
