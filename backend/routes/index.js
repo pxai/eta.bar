@@ -13,4 +13,5 @@ module.exports = function (app) {
     home(app);
     user(app);
     question(app);
+    comment(app);
 }
