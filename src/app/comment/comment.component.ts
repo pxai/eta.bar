@@ -14,6 +14,7 @@ export class CommentComponent {
   text: string = '';
    localState: any;
    session: any;
+  toggleComment: boolean = true;
 
   constructor(public route: ActivatedRoute,
               public storeHelper: StoreHelper,
@@ -25,8 +26,12 @@ export class CommentComponent {
   }
 
   submitComment() {
+    this.toggleComment = false;
     console.log(this.text + ' in ' + this.storeHelper.store.getState().question._id);
-    this.commentService.createComment(1,this.text).subscribe(data => { console.log('Ok, comment received');});
+    this.commentService.createComment(1,this.text).subscribe(data => {
+      console.log('Ok, comment received');
+      this.text = '';
+    });
   }
 
 

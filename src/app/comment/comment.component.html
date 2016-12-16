@@ -3,18 +3,25 @@
   <md-card-subtitle>Please Sign In</md-card-subtitle>
   <md-card-content>
     <div  *ngIf="session.given_name == null" class="main-application">
-      <form (ngSubmit)="submitComment()" autocomplete="off">
 
-        <md-input
-          placeholder="Comments here"
-          autofocus
-          [(ngModel)]="text"
-          name="text"
-          [value]="text"
-        ></md-input>
+      <div *ngIf="toggleComment==true">
+        <form (ngSubmit)="submitComment()" autocomplete="off">
 
-        <button id="submit-button" md-raised-button color="accent">Send comment, {{ session.given_name }}</button>
-      </form>
+          <md-input
+            placeholder="Comments here"
+            autofocus
+            [(ngModel)]="text"
+            name="text"
+            [value]="text"
+          ></md-input>
+
+          <button id="submit-button" md-raised-button color="accent">Send comment, {{ session.given_name }}</button>
+        </form>
+      </div>
+      <div *ngIf="toggleComment==false">
+        <p>Your comment was sent</p>
+        <button id="toggle-comment" md-raised-button  (click)="toggleComment=true;">New comment</button>
+      </div>
     </div>
   </md-card-content>
 
