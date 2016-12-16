@@ -9,6 +9,7 @@
 var home = require('./home');
 var user = require('./user');
 var question = require('./question');
+var comment = require('./comment');
 module.exports = function (app) {
     home(app);
     user(app);

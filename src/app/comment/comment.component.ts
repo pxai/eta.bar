@@ -9,7 +9,9 @@ import { StoreHelper } from '../store-helper';
   templateUrl: './comment.component.html'
 })
 export class CommentComponent {
-   text: String = '';
+
+  comment: {id:1,text: ''};
+  text: string = '';
    localState: any;
    session: any;
 
@@ -23,7 +25,8 @@ export class CommentComponent {
   }
 
   submitComment() {
-    console.log(this.text);
+    console.log(this.text + ' in ' + this.storeHelper.store.getState().question._id);
+    this.commentService.createComment(1,this.text).subscribe(data => { console.log('Ok, comment received');});
   }
 
 

@@ -2,13 +2,16 @@
 <md-card class="wide-card">
   <md-card-subtitle>Please Sign In</md-card-subtitle>
   <md-card-content>
-    <div  *ngIf="session.given_name != null" class="main-application">
+    <div  *ngIf="session.given_name == null" class="main-application">
       <form (ngSubmit)="submitComment()" autocomplete="off">
 
         <md-input
+          placeholder="Comments here"
+          autofocus
+          [(ngModel)]="text"
+          name="text"
           [value]="text"
-          placeholder="Submit Local State to App State"
-          autofocus></md-input>
+        ></md-input>
 
         <button id="submit-button" md-raised-button color="accent">Send comment, {{ session.given_name }}</button>
       </form>

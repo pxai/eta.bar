@@ -40,7 +40,7 @@ export class QuestionService {
   }
 
   public getResult(id: number, answerId: number) {
-    console.log('Title#getData(): Get Latest from back-end');
+    console.log('Get result after vote');
     //var headers = new Headers();
     //headers.append('Content-type','application/json');
     return this.http.post(this.resultGetUrl,{questionid: id, answerId: answerId})

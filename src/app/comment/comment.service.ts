@@ -21,11 +21,11 @@ export class CommentService {
                                .map(res => res.json());
   }
 
-  public createComment () {
-    console.log('Title#getData(): Get Latest from back-end');
-    var headers = new Headers();
-    headers.append('Content-type','application/json');
-    return this.http.post(this.commentCreateUrl, headers)
+  public createComment (questionid: number, text: string) {
+    console.log('Sending comment: ' + text + ' to: ' + this.commentCreateUrl);
+    // var headers = new Headers();
+    // headers.append('Content-type','application/json');
+    return this.http.post(this.commentCreateUrl, {questionid: questionid, text: text})
       .map(res => res.json());
 
   }
