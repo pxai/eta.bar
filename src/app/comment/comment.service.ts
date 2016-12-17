@@ -11,12 +11,14 @@ export class CommentService {
   private commentsGetUrl : string = '/api/v1/comments/last/';
   private commentCreateUrl : string = '/api/v1/comments/create';
 
-  constructor(private http: Http, storeHelper: StoreHelper) {
+  constructor(private http: Http, private storeHelper: StoreHelper) {
 
   }
+  public getLatest() {
+    let id = this.storeHelper.store.getState().question._id;
+    id = 1;
+    console.log('Getting latest comments from backend: ' + id);
 
-  public getLatest(id: string) {
-    console.log('Title#getData(): Get Latest from back-end');
      return this.http.get(this.commentsGetUrl+id)
                                .map(res => res.json());
   }

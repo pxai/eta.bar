@@ -27,8 +27,10 @@
 
 </md-card>
 <hr>
+<div  *ngFor="let comment of this.comments">
 <md-card>
-  <md-card-subtitle><strong>Technologies used:</strong>
-    Angular2 with TS + Node.js + Express + MongoDB
+  <md-card-subtitle><strong>{{ comment.user.name }}</strong>
+    {{ comment.text }}
 </md-card-subtitle>
 </md-card>
+</div>

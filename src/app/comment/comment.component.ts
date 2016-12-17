@@ -14,6 +14,7 @@ export class CommentComponent {
   text: string = '';
    localState: any;
    session: any;
+   comments  = [];
   toggleComment: boolean = true;
 
   constructor(public route: ActivatedRoute,
@@ -21,15 +22,19 @@ export class CommentComponent {
               private commentService: CommentService) {
 
     this.session = storeHelper.store.getState().session;
+    this.commentService.getLatest().subscribe(data => {
+      console.log('Ok, comments received:  ' + data.length);
+      this.comments = data;
+    });
     console.log('Ok, comments: ');
-    console.log(this.session);
+
   }
 
   submitComment() {
     this.toggleComment = false;
     console.log(this.text + ' in ' + this.storeHelper.store.getState().question._id);
     this.commentService.createComment(1,this.text).subscribe(data => {
-      console.log('Ok, comment received');
+      console.log('Ok, comment sent and received');
       this.text = '';
     });
   }

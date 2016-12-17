@@ -12,10 +12,16 @@ var isloggedin = require('../middleware/isloggedin');
 var anonymousUser = new User({userid: "1", name: 'Sample', salt : 'Salty salt', hash: 'superbhash', provider: 'myself', provider_id: "1"});
 module.exports = function (app) {
 
-    app.get('/api/v1/comments/last/' ,function(req, res) {
-      req.session.user =  !req.session.user?anonymousUser:req.session.user;
-        sample.type = "normal";
-        res.send(sample);
+    app.get('/api/v1/comments/last/:id' ,function(req, res) {
+      var questionid = req.params['id'];
+      Comment.find({questionid: questionid}, {}, {sort: {date: -1}, limit: 10},
+        function (err, result) {
+          if (err) { res.send('{"result":"error"}'); }
+          var formatted = { 'result' : 'ok', 'data':[]};
+          console.log(result);
+
+          res.send(result);
+        });
     });
 
     app.post('/api/v1/comments/create', function(req, res) {
