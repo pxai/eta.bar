@@ -3,6 +3,7 @@ import { Question } from './question';
 import { AppState } from '../app.service';
 import { Title } from './title';
 import { QuestionService } from './question';
+import { CommentService } from '../comment/comment.service';
 import { XLarge } from './x-large';
 import { OAuthService } from 'angular2-oauth2/oauth-service';
 import { Store } from '../app.store';
@@ -15,7 +16,8 @@ import { Store } from '../app.store';
   // We need to tell Angular's Dependency Injection which providers are in our app.
   providers: [
     Title,
-    QuestionService
+    QuestionService,
+    CommentService
   ],
   // Our list of styles in our component. We may add more to compose many styles together
   styleUrls: [ './home.component.css' ],
@@ -31,6 +33,7 @@ export class HomeComponent {
   // TypeScript public modifiers
   constructor(public appState: AppState, public title: Title,
               public questionService: QuestionService,
+              private commentService: CommentService,
               private store: Store,
               private oauthService: OAuthService) {
   }
@@ -47,7 +50,12 @@ export class HomeComponent {
     // subscribe to the store, so other operations just need to subscribe
     this.store.changes //.pluck('question')
       //.map((data: any) => data)
-      .subscribe((data: any) =>  { console.log('Home comoponent');console.log(data.question);this.question = data.question;});
+      .subscribe((data: any) =>  {
+          console.log('Home comoponent: ' + data.question._id);
+          console.log(data.question);
+          this.question = data.question;
+
+      });
   }
 
   submitState(value: string) {

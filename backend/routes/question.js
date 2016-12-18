@@ -6,6 +6,7 @@
 var mongoose = require('mongoose');
 var Vote = mongoose.model('Vote');
 var User = mongoose.model('User');
+var Comment = mongoose.model('Comment');
 var sanitize = require('../helpers/sanitize');
 var isloggedin = require('../middleware/isloggedin');
 var sample = {
@@ -25,7 +26,15 @@ module.exports = function (app) {
     app.get('/api/v1/question/last' ,function(req, res) {
       req.session.user =  !req.session.user?anonymousUser:req.session.user;
         sample.type = "normal";
-        res.send(sample);
+      Comment.find({questionid: sample._id}, {}, {sort: {date: -1}, limit: 10},
+        function (err, result) {
+          if (err) { res.send('{"result":"error"}'); }
+          var formatted = { 'result' : 'ok', 'data':[]};
+          console.log('Loaded comments: ' + result.length);
+          sample.comments = result;
+          res.send(sample);
+        });
+
     });
 
   app.post('/api/v1/question/vote' ,function(req, res) {

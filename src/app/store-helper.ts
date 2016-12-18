@@ -17,6 +17,14 @@ export class StoreHelper {
     this.store.setState(Object.assign({}, currentState, { [prop]: state }));
   }
 
+  addComments(prop, state) {
+    const currentState = this.store.getState();
+    console.log('Saving comments In Store Helper');
+    console.log(state);
+    currentState.question.comments = state;
+    this.store.setState(Object.assign({}, currentState, { [prop]: state }));
+  }
+
   add(prop, state) {
     const currentState = this.store.getState();
     const collection = currentState[prop];
