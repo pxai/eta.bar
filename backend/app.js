@@ -8,6 +8,7 @@ var express = require('express');
 var expressSession = require('express-session');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var morgan = require('morgan');
 const MongoStore = require('connect-mongo')(expressSession);
 
 
@@ -24,9 +25,9 @@ var app = express();
 app.set('views', __dirname + '/views');
 app.set('view engine', 'pug');
 
-//app.set('');
 // If we want to use post data:
 app.use(bodyParser.json());
+app.use(morgan('combined'));
 
 
 // For session data:
