@@ -36,6 +36,7 @@ export class CommentComponent {
 
       });
     console.log('Ok, comments: ');
+    console.log(this.session);
 
   }
 

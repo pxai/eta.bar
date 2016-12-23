@@ -2,7 +2,7 @@
 <md-card class="wide-card">
   <md-card-subtitle>Please Sign In</md-card-subtitle>
   <md-card-content>
-    <div  *ngIf="session.given_name == null" class="main-application">
+    <div  *ngIf="session.given_name != null" class="main-application">
 
       <div *ngIf="toggleComment==true">
         <form (ngSubmit)="submitComment()" autocomplete="off">

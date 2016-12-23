@@ -70,6 +70,8 @@ console.log(this);
     if (!claims) return "";
     this.storeHelper.update('session', claims);
     console.log("Given name: " + claims.userName + ","  + claims.given_name);
+
+
     console.log(this.oauthService.getAccessToken());
     console.log(this.oauthService.getIdentityClaims());
 
@@ -83,6 +85,7 @@ console.log(this);
   }
 
   logout() {
+    console.log('Log out');
     this.oauthService.logOut();
     this.store.purge();
   }
