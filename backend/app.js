@@ -37,10 +37,10 @@ app.use(expressSession({secret: 'tannedkrab',
             saveUninitialized: true,
             key: 'session',
             store: new MongoStore({
-                    host: '127.0.0.1',
-                    port: '27017',
+                    host: config.dbhost,
+                    port: config.dbport,
                     db: 'session',
-                    url: 'mongodb://localhost:27017/blog'
+                    url: config.mongoUrl
                 })
         }) );
 
@@ -55,5 +55,5 @@ app.use(express.static('../dist'));
 
 // And there we go, listening on port 3000
 app.listen(config.port, function () {
-    console.log('Starting ' + config.appName + '. Now listening on http://localhost:3001 ' + ' dirname: ' + __dirname);
+    console.log('Starting ' + config.appName + '. Now listening on http://localhost:' + config.port + ' dirname: ' + __dirname);
 });

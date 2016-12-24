@@ -1,5 +1,7 @@
 {
   "appName" : "eta.bar",
   "port" : "3001",
+  "dbhost" : "localhost",
+  "dbport" : 27017,
   "mongoUrl" : "mongodb://localhost/blog"
 }
