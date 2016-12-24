@@ -7,6 +7,7 @@
 var express = require('express');
 var expressSession = require('express-session');
 var bodyParser = require('body-parser');
+var config = require('config');
 var mongoose = require('mongoose');
 var morgan = require('morgan');
 const MongoStore = require('connect-mongo')(expressSession);
@@ -53,6 +54,6 @@ routes(app);
 app.use(express.static('../dist'));
 
 // And there we go, listening on port 3000
-app.listen(3001, function () {
-    console.log('now listening on http://localhost:3001 ' + ' dirname: ' + __dirname);
+app.listen(config.port, function () {
+    console.log('Starting ' + config.appName + '. Now listening on http://localhost:3001 ' + ' dirname: ' + __dirname);
 });
