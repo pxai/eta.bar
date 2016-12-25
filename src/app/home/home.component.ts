@@ -29,6 +29,7 @@ export class HomeComponent {
   localState = { value: '' };
   public format: string = "normal";
   public question: Question;
+  public votes = [];
 
   // TypeScript public modifiers
   constructor(public appState: AppState, public title: Title,
@@ -66,7 +67,12 @@ export class HomeComponent {
 
   voteFor(_id: number, answer) {
     console.log('You voted for ' + _id+ ', answer: ' + answer._id);
-    this.questionService.getResult(_id, answer._id).subscribe(data => {this.question = data.question; this.format= 'voted'});
+    this.questionService.getResult(_id, answer._id).subscribe(data => {
+      //this.question = data.question;
+      console.log(data);
+      this.format= 'voted';
+      this.votes = data;
+    });
   }
 
 

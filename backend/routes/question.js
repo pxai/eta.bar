@@ -59,9 +59,21 @@ module.exports = function (app) {
               res.send({"msg": "Message not saved", "err": err});
               return;
             }
-            console.log('Saving: ' + vote);
+            console.log('Vote saved! ' + vote);
             sample.type = "voted";
-            res.send(sample);
+
+            Vote.aggregate(
+                {$match: {questionid: vote.questionid}},
+                {$project: {answerid: 1, questionid:1, _id: 0}},
+                {$group: { _id:{answerid:"$answerid"}, count: {$sum:1} }},
+                {$sort: { answerid: 1}},
+              function (err, result) {
+                if (err) console.log('No data from votes: ' + err);
+                console.log(result);
+                res.send(result);
+              });
+
+            //res.send(sample);
           });
         }
       });
