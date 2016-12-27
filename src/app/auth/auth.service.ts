@@ -13,8 +13,8 @@ export class AuthService {
 
   }
 
-  public signInUser () {
-    return this.http.get(this.validateUrl)
+  public signInUser (context: any) {
+    return this.http.post(this.validateUrl, {data: context})
       .map(res => res.json() );
       /*.do( (question: any) => {
         this.storeHelper.update('question', question);

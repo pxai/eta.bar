@@ -54,8 +54,8 @@ export class AppComponent {
   // Output just for purpose of demonstration
   // Don't try this at home ... ;-)
   //
-  console.log("logged in");
-    this.authService.signInUser().subscribe( data => {
+  console.log("logged in: " + context.accessToken);
+    this.authService.signInUser(context).subscribe( data => {
      console.log('Finaly: ' + data);
      });
   console.log(context);
@@ -74,7 +74,7 @@ console.log(this);
 
     if (!claims) return "";
     this.storeHelper.update('session', claims);
-    console.log("Given name: " + claims.userName + ","  + claims.given_name);
+    console.log("Given name: " + claims.given_name + ","  + claims.picture);
 
 
     console.log(this.oauthService.getAccessToken());
