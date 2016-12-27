@@ -17,7 +17,7 @@ import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { Store } from './app.store';
-import { AuthService } from './auth';
+import { AuthService } from './auth/auth.service';
 import { StoreHelper } from './store-helper';
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';

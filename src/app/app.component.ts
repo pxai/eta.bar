@@ -5,9 +5,10 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OAuthService } from 'angular2-oauth2/oauth-service';
 
-//import { AppState } from './app.service';
+import { AppState } from './app.service';
 import { Store } from './app.store';
 import { StoreHelper } from './store-helper';
+import { AuthService } from './auth/auth.service';
 
 /*
  * App Component
@@ -35,7 +36,8 @@ export class AppComponent {
     public storeHelper: StoreHelper,
     public store: Store,
     public route: ActivatedRoute,
-    private oauthService: OAuthService) {
+    private oauthService: OAuthService,
+    private authService: AuthService) {
 
   this.oauthService.loginUrl = "https://accounts.google.com/o/oauth2/v2/auth"; //Id-Provider?
   this.oauthService.redirectUri = window.location.origin + "";
@@ -53,6 +55,9 @@ export class AppComponent {
   // Don't try this at home ... ;-)
   //
   console.log("logged in");
+    this.authService.signInUser().subscribe( data => {
+     console.log('Finaly: ' + data);
+     });
   console.log(context);
 }});
 console.log(this);

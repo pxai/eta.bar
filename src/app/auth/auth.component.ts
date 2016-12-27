@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { OAuthService } from 'angular2-oauth2/oauth-service';
 
 
+
 @Component({
   selector: 'auth',
   templateUrl: './auth.component.html'
