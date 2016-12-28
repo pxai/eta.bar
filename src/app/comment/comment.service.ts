@@ -9,6 +9,7 @@ export class CommentService {
 
   //private questionGetUrl : string = '/assets/question.json';
   private commentsGetUrl : string = '/api/v1/comments/last/';
+  private commentsPreviousGetUrl : string = '/api/v1/comments/prev/';
   private commentsPagesGetUrl : string = '/api/v1/comments/pages/';
   private commentCreateUrl : string = '/api/v1/comments/create';
 
@@ -28,6 +29,17 @@ export class CommentService {
        });
   }
 
+  public getPrevious(questionid: any, from: string = '2016-12-18T00:03:46.658Z') {
+
+    console.log('Getting previous comments from backend: ' + questionid);
+
+    return this.http.get(this.commentsPreviousGetUrl+questionid+'/'+from)
+      .map(res => res.json())
+      .do( (comments: any) => {
+        this.storeHelper.addComments('comments', comments);
+        console.log('Comments received: ');console.log(comments);
+      });
+  }
 
   public createComment (questionid: any, text: string) {
     console.log('Sending comment: ' + text + ' to: ' + this.commentCreateUrl);

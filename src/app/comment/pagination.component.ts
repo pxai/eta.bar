@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommentService } from './comment.service';
 import { StoreHelper } from '../store-helper';
@@ -9,6 +9,11 @@ import { StoreHelper } from '../store-helper';
   templateUrl: './pagination.component.html'
 })
 export class PaginationComponent {
+  @Input()
+  firstPage: Date;
+  @Input()
+  lastPage: Date;
+
   pages : number = 3;
   comment: {id:1,text: ''};
   text: string = '';
@@ -45,6 +50,15 @@ export class PaginationComponent {
       this.text = '';
     });
   }*/
+
+  getPrev (createdAt: string) {
+    let id = this.storeHelper.store.getState().question._id;
+    console.log('Checking for : ' + id + ' after: ' + createdAt);
+    this.commentService.getPrevious(id, createdAt).subscribe(data => {
+      console.log('Ok, comment sent and received' + data);
+      this.text = '';
+    });
+  }
 
    getNext (createdAt: string) {
     let id = this.storeHelper.store.getState().question._id;

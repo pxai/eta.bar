@@ -29,9 +29,13 @@
 <hr>
 <div  *ngFor="let comment of this.comments">
 <md-card>
-  <md-card-subtitle><strong>{{ comment.user.name }}</strong>
+  <md-card-content>
     {{ comment.text }}
+  </md-card-content>
+  <md-card-subtitle>
+    {{ comment.createdAt }}
+    <strong>{{ comment.login }}</strong>
 </md-card-subtitle>
 </md-card>
 </div>
-<comments-pagination></comments-pagination>
+<comments-pagination firstPage="{{ firstDate }}" lastPage="{{ lastDate }}"></comments-pagination>

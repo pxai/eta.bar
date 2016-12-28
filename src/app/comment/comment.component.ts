@@ -16,6 +16,8 @@ export class CommentComponent {
    session: any;
    comments  = [];
   toggleComment: boolean = true;
+  lastDate : string;
+  firstDate: string;
 
   constructor(public route: ActivatedRoute,
               public storeHelper: StoreHelper,
@@ -33,7 +35,10 @@ export class CommentComponent {
         // console.log('Comment component: ' + data.question._id);
         console.log('CC> Lets see: ');console.log(data);
         this.comments = data.comments;
-
+        if (this.comments.length > 0) {
+          this.firstDate = data.comments[0].createdAt;
+          this.lastDate = data.comments[(data.comments.length - 1)].createdAt;
+        }
       });
     console.log('CC> Ok, comments: ');
     console.log(this.session);

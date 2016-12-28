@@ -25,6 +25,19 @@ module.exports = function (app) {
         });
     });
 
+  app.get('/api/v1/comments/prev/:id/:from' ,function(req, res) {
+    var questionid = req.params['id'];
+    var from = new Date(req.params['from']) || new Date();
+    Comment.find({questionid: questionid, createdAt: { $lte: from }}, {}, {sort: {date: -1}, limit: 10},
+      function (err, result) {
+        if (err) { res.send('{"result":"error"}'); }
+        var formatted = { 'result' : 'ok', 'data':[]};
+        console.log(from  +  ' > ' + result);
+
+        res.send(result);
+      });
+  });
+
     app.post('/api/v1/comments/create', function(req, res) {
       req.session.user =  !req.session.user?anonymousUser:req.session.user;
       req.session.login =  !req.session.login?anonymousUser:req.session.login;
