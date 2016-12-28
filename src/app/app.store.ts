@@ -27,6 +27,7 @@ export interface Question {
 // This is an interface of how our state will look like
 export interface State {
   question: Question
+  firstComment
   comments
   session: {}
 }
@@ -35,6 +36,7 @@ export interface State {
 // The : State gives some type safety
 const defaultState: State = {
   question : {_id: 0, question: "", answers: []},
+  firstComment: '',
   comments: [],
   session: {}
 }

@@ -1,5 +1,4 @@
 <div>
-  pages {{ pages }}
-  <button md-button (click)="getPrev(firstPage)">Prev</button>
+  <button *ngIf="firstComment != firstPage" md-button (click)="getPrev(firstPage)">Prev</button>
   <button md-button (click)="getNext(lastPage)">Next</button>
 </div>

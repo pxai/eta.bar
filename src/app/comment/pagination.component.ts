@@ -21,12 +21,15 @@ export class PaginationComponent {
    session: any;
    comments  = [];
   toggleComment: boolean = true;
+  firstComment : string = '';
 
   constructor(public route: ActivatedRoute,
               public storeHelper: StoreHelper,
               private commentService: CommentService) {
 
     this.session = storeHelper.store.getState().session;
+
+
    /* this.commentService.getLatest().subscribe(data => {
       console.log('Ok, comments received:  ' + data.length);
       this.comments = data;
@@ -36,6 +39,7 @@ export class PaginationComponent {
     //.map((data: any) => data)
       .subscribe((data: any) =>  {
         console.log(data.question.comments);
+        this.firstComment = storeHelper.store.getState().firstComment;
       });
     console.log('Ok, comments: ');
 
