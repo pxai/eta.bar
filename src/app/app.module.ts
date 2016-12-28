@@ -22,7 +22,7 @@ import { StoreHelper } from './store-helper';
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 import { CreateComponent } from './create';
-import { CommentComponent, CommentService } from './comment';
+import { CommentComponent, CommentService, PaginationComponent } from './comment';
 import { AuthComponent } from './auth/index.ts';
 import { MissingPageComponent } from './missing-page';
 import { XLarge } from './home/x-large';
@@ -56,6 +56,7 @@ type StoreType = {
     HomeComponent,
     CreateComponent,
     CommentComponent,
+    PaginationComponent,
     AuthComponent,
     MissingPageComponent,
     XLarge

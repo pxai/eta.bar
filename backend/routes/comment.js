@@ -11,14 +11,15 @@ var isloggedin = require('../middleware/isloggedin');
 
 var anonymousUser = new User({userid: "1", name: 'Sample', salt : 'Salty salt', hash: 'superbhash', provider: 'myself', provider_id: "1"});
 module.exports = function (app) {
-
-    app.get('/api/v1/comments/last/:id' ,function(req, res) {
+// , createdOn: { $lte: new Date(from) }
+    app.get('/api/v1/comments/last/:id/:from' ,function(req, res) {
       var questionid = req.params['id'];
-      Comment.find({questionid: questionid}, {}, {sort: {date: -1}, limit: 10},
+      var from = new Date(req.params['from']) || new Date();
+      Comment.find({questionid: questionid, createdAt: { $gte: from }}, {}, {sort: {date: -1}, limit: 10},
         function (err, result) {
           if (err) { res.send('{"result":"error"}'); }
           var formatted = { 'result' : 'ok', 'data':[]};
-          console.log(result);
+          console.log(from  +  ' > ' + result);
 
           res.send(result);
         });
