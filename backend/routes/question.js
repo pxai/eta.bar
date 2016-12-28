@@ -9,7 +9,7 @@ var User = mongoose.model('User');
 var Comment = mongoose.model('Comment');
 var sanitize = require('../helpers/sanitize');
 var isloggedin = require('../middleware/isloggedin');
-var sample = {
+var question = {
   "_id": 1,
   "question": "What is the meaning of life",
   "type": "normal",
@@ -25,21 +25,20 @@ module.exports = function (app) {
 
     app.get('/api/v1/question/last' ,function(req, res) {
       req.session.user =  !req.session.user?anonymousUser:req.session.user;
-        sample.type = "normal";
-      Comment.find({questionid: sample._id}, {}, {sort: {date: -1}, limit: 10},
+
+      Comment.find({questionid: question._id}, {}, {sort: {date: -1}, limit: 10},
         function (err, result) {
           if (err) { res.send('{"result":"error"}'); }
           var formatted = { 'result' : 'ok', 'data':[]};
           console.log('Loaded comments: ' + result.length);
-          sample.comments = result;
-          res.send(sample);
+          res.send({question: question, comments: result});
         });
 
     });
 
   app.post('/api/v1/question/vote' ,function(req, res) {
       var vote = new Vote({
-        user: req.session.login,
+        user: req.session.user,
         questionid: sanitize(req.body.questionid),
         ip: req.ip,
         answerid: sanitize(req.body.answerId)
@@ -60,7 +59,7 @@ module.exports = function (app) {
               return;
             }
             console.log('Vote saved! ' + vote);
-            sample.type = "voted";
+            question.type = "voted";
 
             Vote.aggregate(
                 {$match: {questionid: vote.questionid}},

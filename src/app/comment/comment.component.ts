@@ -30,12 +30,12 @@ export class CommentComponent {
     this.storeHelper.store.changes //.pluck('question')
     //.map((data: any) => data)
       .subscribe((data: any) =>  {
-        console.log('Comment component: ' + data.question._id);
-        console.log(data.question.comments);
-        this.comments = data.question.comments;
+        // console.log('Comment component: ' + data.question._id);
+        console.log('CC> Lets see: ');console.log(data);
+        this.comments = data.comments;
 
       });
-    console.log('Ok, comments: ');
+    console.log('CC> Ok, comments: ');
     console.log(this.session);
 
   }

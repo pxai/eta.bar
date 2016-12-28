@@ -22,19 +22,20 @@ export interface Question {
   _id: number | string
   question: string
   answers: Answer[]
-  comments: Comment[]
 }
 
 // This is an interface of how our state will look like
 export interface State {
   question: Question
+  comments
   session: {}
 }
 
 // This is  the state that application is gonna start with
 // The : State gives some type safety
 const defaultState: State = {
-  question : {_id: 0, question: "", answers: [], comments:[]},
+  question : {_id: 0, question: "", answers: []},
+  comments: [],
   session: {}
 }
 

@@ -16,14 +16,14 @@ export class CommentService {
 
   }
 
-  public getLatest(questionid: any, page: string = '2016-12-18T00:03:46.658Z') {
+  public getLatest(questionid: any, from: string = '2016-12-18T00:03:46.658Z') {
 
     console.log('Getting latest comments from backend: ' + questionid);
 
-     return this.http.get(this.commentsGetUrl+questionid+'/'+page)
+     return this.http.get(this.commentsGetUrl+questionid+'/'+from)
                                .map(res => res.json())
                                .do( (comments: any) => {
-         this.storeHelper.addComments('question', comments);
+         this.storeHelper.addComments('comments', comments);
          console.log('Comments received: ');console.log(comments);
        });
   }

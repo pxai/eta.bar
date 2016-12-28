@@ -33,9 +33,10 @@ export class QuestionService {
     // The operation is immutable for data
      return this.http.get(this.questionGetUrl)
                                 .map(res => res.json())
-                                .do( (question: any) => {
-                                    this.storeHelper.update('question', question);
-                                    console.log('Service: ');console.log(question);
+                                .do( (data: any) => {
+                                    this.storeHelper.update('question', data.question);
+                                    this.storeHelper.update('comments', data.comments);
+                                    console.log('Service: ');console.log(data.question);
                                                           });
   }
 
