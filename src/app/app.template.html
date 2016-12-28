@@ -18,15 +18,15 @@
         <button md-button [routerLink]=" ['./home'] ">
           Home
         </button>
-        <button color="accent" md-raised-button [routerLink]=" ['./create'] ">
+        <!--button color="accent" md-raised-button [routerLink]=" ['./create'] ">
           Create
-        </button>
+        </button-->
 
-        <span  *ngIf="userName != ''" class="main-application">
-            <i>Hello, {{ userName }}!</i>
+        <span  *ngIf="userData != ''" class="main-application">
+            <i>Hello, {{ userData.given_name }}!</i>
           <button md-button (click)="logout()">Logout</button>
         </span>
-        <span  *ngIf="userName == ''" class="main-application">
+        <span  *ngIf="userData == ''" class="main-application">
           <button md-button (click)="login()">Login</button>
         </span>
       <!-- button md-raised-button color="warn" (click)="isDarkTheme = !isDarkTheme">TOGGLE THEME</button -->
