@@ -26,8 +26,10 @@ module.exports = function (app) {
 
     app.post('/api/v1/comments/create', function(req, res) {
       req.session.user =  !req.session.user?anonymousUser:req.session.user;
+      req.session.login =  !req.session.login?anonymousUser:req.session.login;
       var comment = new Comment({
-        user: req.session.user,
+        user: req.session.login,
+        login: req.session.user,
         questionid: sanitize(req.body.questionid),
         ip: req.ip,
         text: sanitize(req.body.text),

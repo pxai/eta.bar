@@ -39,7 +39,7 @@ module.exports = function (app) {
 
   app.post('/api/v1/question/vote' ,function(req, res) {
       var vote = new Vote({
-        user: req.session.user,
+        user: req.session.login,
         questionid: sanitize(req.body.questionid),
         ip: req.ip,
         answerid: sanitize(req.body.answerId)

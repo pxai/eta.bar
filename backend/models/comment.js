@@ -10,6 +10,7 @@ var Schema = mongoose.Schema;
 
 var schema = mongoose.Schema({
     user: { type: Object, required: true},
+    login: { type: Object, required: true},
     questionid: { type: String, required: true, trim: true },
     ip: { type: String, required: true, trim: true },
     text: { type: String, required: true, trim: true},

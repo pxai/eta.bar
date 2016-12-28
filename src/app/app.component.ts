@@ -49,16 +49,16 @@ export class AppComponent {
 
   // https://console.developers.google.com/apis/credentials/oauthclient/clientId?project=clientId.projectnumb
   this.oauthService.tryLogin({
-  onTokenReceived: context => {
+  onTokenReceived: authData => {
   //
   // Output just for purpose of demonstration
   // Don't try this at home ... ;-)
   //
-  console.log("logged in: " + context.accessToken);
-    this.authService.signInUser(context).subscribe( data => {
+  console.log("logged in: " + authData.accessToken);
+    this.authService.signInUser(authData).subscribe( data => {
      console.log('Finaly: ' + data);
      });
-  console.log(context);
+  console.log(authData);
 }});
 console.log(this);
 

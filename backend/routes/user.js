@@ -9,11 +9,12 @@ var isloggedin = require('../middleware/isloggedin');
 
 module.exports = function (app) {
 
-    app.get('/validate' ,function(req, res) {
+    app.post('/validate' ,function(req, res) {
+      var authData = req.body.idClaims;
       req.session.isLoggedIn = true;
-      req.session.user = '@pello';
-      req.session.login = '@pello';
-      console.log('created user: %s', '@pello');
+      req.session.user = authData.given_name;
+      req.session.login = authData.email;
+      console.log('created user: %s', authData.email);
       res.send({valid: true});
 
     });
