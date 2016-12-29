@@ -7,6 +7,7 @@ import { CommentService } from '../comment/comment.service';
 import { XLarge } from './x-large';
 import { OAuthService } from 'angular2-oauth2/oauth-service';
 import { Store } from '../app.store';
+import { StoreHelper } from '../store-helper';
 
 @Component({
   // The selector is what angular internally uses
@@ -36,6 +37,7 @@ export class HomeComponent {
               public questionService: QuestionService,
               private commentService: CommentService,
               private store: Store,
+              private storeHelper: StoreHelper,
               private oauthService: OAuthService) {
   }
 
@@ -52,7 +54,7 @@ export class HomeComponent {
     this.store.changes //.pluck('question')
       //.map((data: any) => data)
       .subscribe((data: any) =>  {
-          console.log('Home comoponent: ' + data.question._id);
+          console.log('Home comoponent, store changed: ' + data.question._id);
           console.log(data.question);
           this.question = data.question;
 
@@ -66,10 +68,11 @@ export class HomeComponent {
   }
 
   voteFor(_id: number, answer) {
-    console.log('You voted for ' + _id+ ', answer: ' + answer._id);
-    this.questionService.getResult(_id, answer._id).subscribe(data => {
+    console.log('You voted for ' + _id+ ', answer: ' + answer.id);
+    this.questionService.getResult(_id, answer.id).subscribe(data => {
       //this.question = data.question;
       console.log(data);
+      this.storeHelper.update('votes', data);
       this.format= 'voted';
       this.votes = data;
     });

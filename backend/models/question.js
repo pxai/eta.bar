@@ -16,8 +16,6 @@ var schema = mongoose.Schema({
      {
        answerid: {type: Number},
        answer: { type: String, required: true, trim: true},
-       votes: [vote],
-       user: { type: Object }
      }
     ],
  	createdAt	 : {type: Date, default: Date.now} // Fecha de creación

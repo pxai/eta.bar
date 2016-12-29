@@ -7,7 +7,6 @@ import 'rxjs/Rx';
 export interface Answer {
   _id: number | string
   answer: string
-  votes: number
 }
 
 export interface Comment {
@@ -27,8 +26,9 @@ export interface Question {
 // This is an interface of how our state will look like
 export interface State {
   question: Question
-  firstComment
+  votes
   comments
+  firstComment
   session: {}
 }
 
@@ -36,8 +36,9 @@ export interface State {
 // The : State gives some type safety
 const defaultState: State = {
   question : {_id: 0, question: "", answers: []},
-  firstComment: '',
+  votes: [],
   comments: [],
+  firstComment: '',
   session: {}
 }
 

@@ -37,8 +37,9 @@ export class QuestionService {
                                     this.storeHelper.update('question', data.question);
                                     this.storeHelper.update('comments', data.comments);
                                     this.storeHelper.update('firstComment', data.comments[0].createdAt);
-                                    console.log('Service: ');console.log(data.question);
-                                                          });
+                                    console.log('Get latest: ');
+                                    console.log(data.question);
+                                });
   }
 
   public getResult(id: number, answerId: number) {

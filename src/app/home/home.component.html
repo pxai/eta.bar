@@ -1,4 +1,5 @@
-<div class="app-content"s>
+<script src="../../../backend/models/question.js"></script>
+<div class="app-content" s>
   <h1 x-large class="sample-content">Home</h1>
   <md-card color="primary" class="wide-card">
     <md-card-title>{{this.question.question }}</md-card-title>
@@ -10,7 +11,7 @@
       </div>
       <div class='panel panel-info shadow-2' *ngIf="format != 'normal'">
         <p  *ngFor="let answer of this.question.answers">
-          <a  id="submit-button" md-raised-button color="" (click)="voteFor(this.question._id,answer)">{{ answer.answer }} : {{ votes[(answer._id - 1)].count }}</a>
+          <button id="submit-button" md-raised-button color="" (click)="voteFor(this.question._id,answer)">{{ answer.answer }}</button>
         </p>
       </div>
       <hr>
