@@ -19,6 +19,15 @@ module.exports = function (app) {
 
     });
 
+  app.post('/logout' ,function(req, res) {
+    var authData = req.body.idClaims;
+    req.session.isLoggedIn = false;
+    req.session.userv= null;
+    req.session.login = null;
+    console.log('logged out user: %s', authData.email);
+    res.send({valid: true});
+
+  });
     app.get('/open' ,function(req, res) {
         res.render('open' , {title: 'Logged users page'});
     });

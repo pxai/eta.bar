@@ -8,6 +8,7 @@ import 'rxjs/Rx';
 export class AuthService {
 
   private validateUrl : string = '/validate';
+  private logoutUrl : string = '/logout';
 
   constructor(private http: Http, private storeHelper: StoreHelper) {
 
@@ -20,6 +21,15 @@ export class AuthService {
         this.storeHelper.update('question', question);
         console.log('Service: ');console.log(question);
       });*/
+  }
+
+  public signOutUser (authData: any) {
+    return this.http.post(this.logout, authData)
+      .map(res => res.json() );
+    /*.do( (question: any) => {
+     this.storeHelper.update('question', question);
+     console.log('Service: ');console.log(question);
+     });*/
   }
 
 }
