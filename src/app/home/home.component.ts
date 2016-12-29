@@ -74,7 +74,16 @@ export class HomeComponent {
       console.log(data);
       this.storeHelper.update('votes', data);
       this.format= 'voted';
-      this.votes = data;
+      this.votes = [];
+      for (var i = 0; i < this.question.answers.length;i++) {
+        this.votes[i] = 0;
+      }
+
+      for (var i = 0; i < data.length;i++) {
+        this.votes[data[i]._id.answerid] = data[i].count;
+      }
+
+      console.log(this.votes);
     });
   }
 

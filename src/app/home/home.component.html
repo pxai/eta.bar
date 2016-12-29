@@ -11,7 +11,9 @@
       </div>
       <div class='panel panel-info shadow-2' *ngIf="format != 'normal'">
         <p  *ngFor="let answer of this.question.answers">
-          <button id="submit-button" md-raised-button color="" (click)="voteFor(this.question._id,answer)">{{ answer.answer }}</button>
+          <a id="submit-button" md-raised-button color="" (click)="voteFor(this.question._id,answer)">
+            {{ answer.answer }} {{ votes[answer.id] }}
+          </a>
         </p>
       </div>
       <hr>
