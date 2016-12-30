@@ -93,6 +93,10 @@ console.log(this);
     console.log('Log out');
     this.oauthService.logOut();
     this.store.purge();
+    this.authService.signOutUser().subscribe( data => {
+      console.log('Finaly: ' + data);
+      this.storeHelper.update('session',null);
+    });
   }
 }
 

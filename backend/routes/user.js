@@ -19,13 +19,11 @@ module.exports = function (app) {
 
     });
 
-  app.post('/logout' ,function(req, res) {
+  app.get('/logout' ,function(req, res) {
     var authData = req.body.idClaims;
-    req.session.isLoggedIn = false;
-    req.session.userv= null;
-    req.session.login = null;
+    req.session = null;
     console.log('logged out user: %s', authData.email);
-    res.send({valid: true});
+    res.send({session: 'finished'});
 
   });
     app.get('/open' ,function(req, res) {

@@ -23,8 +23,8 @@ export class AuthService {
       });*/
   }
 
-  public signOutUser (authData: any) {
-    return this.http.post(this.logout, authData)
+  public signOutUser () {
+    return this.http.get(this.logoutUrl)
       .map(res => res.json() );
     /*.do( (question: any) => {
      this.storeHelper.update('question', question);

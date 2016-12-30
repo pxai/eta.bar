@@ -8,7 +8,7 @@
 
 module.exports = function isLoggedIn (req, res, next) {
     if (!(req.session && req.session.login)) {
-        return res.redirect('/');
+        return res.send({error: 'Session not started'});
     }
     next();
 }
