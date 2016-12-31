@@ -1,4 +1,4 @@
-<md-sidenav-layout class="webpack-starter" [class.m2app-dark]="isDarkTheme">
+<!--md-sidenav-layout class="webpack-starter" [class.m2app-dark]="isDarkTheme">
   <md-toolbar color="primary">
     <button md-icon-button [md-menu-trigger-for]="menu">
       <md-icon>more_vert</md-icon>
@@ -10,34 +10,30 @@
         <span> Home </span>
       </button>
       <button md-menu-item disabled> Disabled option </button>
+      <button md-raised-button color="warn" (click)="isDarkTheme = !isDarkTheme">TOGGLE THEME</button>
     </md-menu>
-    <span class="right">
-        <button md-button [routerLink]=" ['./'] ">
-          Index
-        </button>
-        <button md-button [routerLink]=" ['./home'] ">
-          Home
-        </button>
-        <!--button color="accent" md-raised-button [routerLink]=" ['./create'] ">
-          Create
-        </button-->
 
-        <span  *ngIf="userData != ''" class="main-application">
+  </md-toolbar>
+</md-sidenav-layout-->
+ <header>
+   <nav>
+      <a [routerLink]=" ['./']">
+      <img src="assets/img/eta.bar.png" alt="eta.bar logo" title="eta.bar logo" />
+     </a>
+             <span  *ngIf="userData != ''" class="main-application">
             <i>Hello, {{ userData.given_name }}!</i>
             <img src="{{ userData.picture }}" align="right" style="width:50px;height:50px;" alt="{{ userData.given_name }}'s Avatar" title="{{ userData.given_name }}'s Avatar" />
           <button md-button (click)="logout()">Logout</button>
         </span>
-        <span  *ngIf="userData == ''" class="main-application">
+     <span  *ngIf="userData == ''" class="main-application">
           <button md-button (click)="login()">Login</button>
         </span>
-      <!-- button md-raised-button color="warn" (click)="isDarkTheme = !isDarkTheme">TOGGLE THEME</button -->
-      </span>
-  </md-toolbar>
-
+   </nav>
+ </header>
   <main>
     <router-outlet></router-outlet>
   </main>
   <footer>
     <span><a [routerLink]="['./about']">about</a> eta.bar by <a [href]="url">@pelloxabier</a></span>
   </footer>
-</md-sidenav-layout>
+
