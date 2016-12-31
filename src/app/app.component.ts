@@ -9,6 +9,7 @@ import { AppState } from './app.service';
 import { Store } from './app.store';
 import { StoreHelper } from './store-helper';
 import { AuthService } from './auth/auth.service';
+import {MdSnackBar, MdSnackBarConfig} from '@angular/material';
 
 /*
  * App Component
@@ -37,7 +38,8 @@ export class AppComponent {
     public store: Store,
     public route: ActivatedRoute,
     private oauthService: OAuthService,
-    private authService: AuthService) {
+    private authService: AuthService,
+   public snackBar: MdSnackBar) {
 
   this.oauthService.loginUrl = "https://accounts.google.com/o/oauth2/v2/auth"; //Id-Provider?
   this.oauthService.redirectUri = window.location.origin + "";
@@ -67,6 +69,7 @@ console.log(this);
   ngOnInit() {
    // console.log('Initial App State', this.appState.state);
     console.log('Initial App Store State', this.store.getState());
+    this.open('Starting app');
   }
 
   get userData() {
@@ -97,6 +100,12 @@ console.log(this);
       console.log('Finaly: ' + data);
       this.storeHelper.update('session',null);
     });
+  }
+
+  open(message: string) {
+    let config = new MdSnackBarConfig();
+    //config.duration = this.autoHide;
+    this.snackBar.open(message, '' && '', config);
   }
 }
 
