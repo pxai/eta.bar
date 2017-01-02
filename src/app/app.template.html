@@ -7,14 +7,12 @@
         <span  *ngIf="user.given_name != ''" class="main-application">
             <i>Hello, {{ user.given_name }}!</i>
             <img src="{{ user.picture }}" align="right" style="width:50px;height:50px;" alt="{{ user.given_name }}'s Avatar" title="{{ user.given_name }}'s Avatar" />
-          <button md-button (click)="logout()">Logout</button>
+             <button md-fab md-mini aria-label="Login" (click)="logout()"><md-icon>exit_to_app</md-icon></button>
         </span>
      <span  *ngIf="user.given_name == null || user.given_name == ''" class="main-application">
-        <button class="md-fab md-mini-fab" aria-label="Login" (click)="login()">
-         Login
-        </button>
+          <button md-fab md-mini  aria-label="Login" (click)="login()"><md-icon>person</md-icon></button>
         </span>
-     <button md-raised-button color="warn" (click)="isDarkTheme = !isDarkTheme">TOGGLE THEME</button>
+
    </nav>
  </header>
   <main>
