@@ -4,12 +4,12 @@
       <a [routerLink]=" ['./']">
       <img src="assets/img/eta.bar.png" alt="eta.bar logo" title="eta.bar logo" />
      </a>
-             <span  *ngIf="userData != ''" class="main-application">
-            <i>Hello, {{ userData.given_name }}!</i>
-            <img src="{{ userData.picture }}" align="right" style="width:50px;height:50px;" alt="{{ userData.given_name }}'s Avatar" title="{{ userData.given_name }}'s Avatar" />
+        <span  *ngIf="user.given_name != ''" class="main-application">
+            <i>Hello, {{ user.given_name }}!</i>
+            <img src="{{ user.picture }}" align="right" style="width:50px;height:50px;" alt="{{ user.given_name }}'s Avatar" title="{{ user.given_name }}'s Avatar" />
           <button md-button (click)="logout()">Logout</button>
         </span>
-     <span  *ngIf="userData == ''" class="main-application">
+     <span  *ngIf="user.given_name == null" class="main-application">
           <button md-button (click)="login()">Login</button>
         </span>
      <button md-raised-button color="warn" (click)="isDarkTheme = !isDarkTheme">TOGGLE THEME</button>

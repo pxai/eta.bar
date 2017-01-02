@@ -26,9 +26,9 @@ import {MdSnackBar, MdSnackBarConfig} from '@angular/material';
 
 })
 export class AppComponent {
-  angularclassLogo = 'assets/img/angularclass-avatar.png';
   name = 'eta.bar';
   url = 'https://github.com/pxai/eta.bar';
+  user = null;
 
   isDarkTheme: boolean = false;
 
@@ -57,10 +57,10 @@ export class AppComponent {
   // Don't try this at home ... ;-)
   //
   console.log("logged in: " + authData.accessToken);
-    this.authService.signInUser(authData).subscribe( data => {
+    /*this.authService.signInUser(authData).subscribe( data => {
      console.log('Finaly: ' + data);
 
-     });
+     });*/
   console.log(authData);
 }});
 console.log(this);
@@ -78,11 +78,10 @@ console.log(this);
 
     if (!claims) return "";
     this.storeHelper.update('session', claims);
-    console.log("Given name: " + claims.given_name + ","  + claims.picture);
-    this.open('Logged in as '+ claims.given_name);
-
-    console.log(this.oauthService.getAccessToken());
-    console.log(this.oauthService.getIdentityClaims());
+    this.user = claims;
+    console.log("Given name: " + claims.given_name + ","  + claims.picture + '. Finally: ');
+    console.log(this.user);
+    //this.open('Logged in as '+ claims.given_name);
 
     return claims;
   }
@@ -97,11 +96,11 @@ console.log(this);
     console.log('Log out');
     this.oauthService.logOut();
     this.store.purge();
-    this.authService.signOutUser().subscribe( data => {
+  /*  this.authService.signOutUser().subscribe( data => {
       console.log('Finaly: ' + data);
       this.storeHelper.update('session',null);
       this.open('Bye. You joined the army of then anonymous.');
-    });
+    });*/
   }
 
   open(message: string) {
