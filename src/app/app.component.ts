@@ -53,11 +53,13 @@ export class AppComponent {
   this.oauthService.tryLogin({
   onTokenReceived: authData => {
     console.log("logged in: " + authData.accessToken);
+    this.storeHelper.update('session', authData.idClaims);
+    console.log("logged in and session:: " + store.session);
     this.authService.signInUser(authData).subscribe( data => {
       console.log('Finaly: ' + data);
       this.user = this.userData;
      });
-  console.log(authData);
+
 }});
 console.log(this);
 
@@ -73,7 +75,7 @@ console.log(this);
     var claims = this.oauthService.getIdentityClaims();
 
     if (!claims) return "";
-    this.storeHelper.update('session', claims);
+
     console.log("Given name: " + claims.given_name + ","  + claims.picture + '. Finally: ');
     this.open('Logged in as '+ claims.given_name);
 

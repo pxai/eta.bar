@@ -48,7 +48,16 @@ export class HomeComponent {
     // this.questionService.getLatest().subscribe(data => this.question = data);
 
     // We get the latests and we just subscribe
-    this.questionService.getLatest().subscribe();
+    this.questionService.getLatest().subscribe((data: any) =>  {
+      console.log('First request: ');
+      console.log(data);
+      if (data.session != null) {
+        this.storeHelper.update('session', data.session);
+        console.log('Previous session recovered ');
+      } else {
+        console.log('No session stablished');
+      }
+    });
 
     // subscribe to the store, so other operations just need to subscribe
     this.store.changes //.pluck('question')
@@ -57,7 +66,6 @@ export class HomeComponent {
           console.log('Home comoponent, store changed: ' + data.question._id);
           console.log(data.question);
           this.question = data.question;
-
       });
   }
 

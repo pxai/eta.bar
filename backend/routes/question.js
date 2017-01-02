@@ -36,9 +36,15 @@ module.exports = function (app) {
               function (err, result) {
                 if (err) { res.send('{"result":"error"}'); }
                 var comments = result || [];
-                var formatted = { 'result' : 'ok', 'data':[]};
+                var session = req.session.authData || null;
+                if (session != null) {
+                  console.log('RECOVER SESSION DATA!!!');
+                } else {
+                  console.log('SESSION NULL??');
+                  console.log(req.session.authData);
+                }
                 console.log('Loaded comments: ' + comments.length);
-                res.send({question: question, comments: comments});
+                res.send({question: question, comments: comments, session : session});
               });
           }
         });

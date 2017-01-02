@@ -4,13 +4,13 @@
       <a [routerLink]=" ['./']">
       <img src="assets/img/eta.bar.png" alt="eta.bar logo" title="eta.bar logo" />
      </a>
-        <span  *ngIf="user.given_name != ''" class="main-application">
-            <i>Hello, {{ user.given_name }}!</i>
-            <img src="{{ user.picture }}" align="right" style="width:50px;height:50px;" alt="{{ user.given_name }}'s Avatar" title="{{ user.given_name }}'s Avatar" />
-             <button md-fab md-mini aria-label="Login" (click)="logout()"><md-icon>exit_to_app</md-icon></button>
+        <span  *ngIf="store.getState().session != null" class="main-application">
+            <i>Hello, {{ store.getState().session.given_name }}!</i>
+            <img src="{{ store.getState().session.picture }}" align="right" style="width:50px;height:50px;" alt="{{ store.getState().session.given_name }}'s Avatar" title="{{ user.given_name }}'s Avatar" />
+             <button md-mini-fab aria-label="Login" (click)="logout()"><md-icon>exit_to_app</md-icon></button>
         </span>
-     <span  *ngIf="user.given_name == null || user.given_name == ''" class="main-application">
-          <button md-fab md-mini  aria-label="Login" (click)="login()"><md-icon>person</md-icon></button>
+     <span  *ngIf="store.getState().session == null" class="main-application">
+          <button md-mini-fab aria-label="Login" (click)="login()"><md-icon>person</md-icon></button>
         </span>
 
    </nav>

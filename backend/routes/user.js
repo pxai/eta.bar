@@ -14,6 +14,7 @@ module.exports = function (app) {
       req.session.isLoggedIn = true;
       req.session.user = authData.given_name;
       req.session.login = authData.email;
+      req.session.authData = req.body.idClaims;
       console.log('created user: %s', authData.email);
       res.send({valid: true});
 

@@ -39,7 +39,7 @@ const defaultState: State = {
   votes: [],
   comments: [],
   firstComment: '',
-  session: {}
+  session: null
 }
 
 // This is the actual store

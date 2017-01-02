@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommentService } from './comment.service';
 import { StoreHelper } from '../store-helper';
-
+import { Store } from '../app.store';
 
 @Component({
   selector: 'comments',
@@ -20,6 +20,7 @@ export class CommentComponent {
   firstDate: string;
 
   constructor(public route: ActivatedRoute,
+              public store: Store,
               public storeHelper: StoreHelper,
               private commentService: CommentService) {
 
