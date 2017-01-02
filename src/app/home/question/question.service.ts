@@ -36,7 +36,9 @@ export class QuestionService {
                                 .do( (data: any) => {
                                     this.storeHelper.update('question', data.question);
                                     this.storeHelper.update('comments', data.comments);
-                                    this.storeHelper.update('firstComment', data.comments[0].createdAt);
+                                    if (data.comments.length > 0) {
+                                      this.storeHelper.update('firstComment', data.comments[0].createdAt);
+                                    }
                                     console.log('Get latest: ');
                                     console.log(data.question);
                                 });

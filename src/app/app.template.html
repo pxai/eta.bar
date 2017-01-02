@@ -9,8 +9,10 @@
             <img src="{{ user.picture }}" align="right" style="width:50px;height:50px;" alt="{{ user.given_name }}'s Avatar" title="{{ user.given_name }}'s Avatar" />
           <button md-button (click)="logout()">Logout</button>
         </span>
-     <span  *ngIf="user.given_name == null" class="main-application">
-          <button md-button (click)="login()">Login</button>
+     <span  *ngIf="user.given_name == null || user.given_name == ''" class="main-application">
+        <button class="md-fab md-mini-fab" aria-label="Login" (click)="login()">
+         Login
+        </button>
         </span>
      <button md-raised-button color="warn" (click)="isDarkTheme = !isDarkTheme">TOGGLE THEME</button>
    </nav>

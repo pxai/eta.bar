@@ -28,7 +28,8 @@ import {MdSnackBar, MdSnackBarConfig} from '@angular/material';
 export class AppComponent {
   name = 'eta.bar';
   url = 'https://github.com/pxai/eta.bar';
-  user = null;
+  user = { given_name: '', picture: ''};
+  session: any;
 
   isDarkTheme: boolean = false;
 
@@ -49,18 +50,13 @@ export class AppComponent {
   this.oauthService.oidc = true;
   this.oauthService.setStorage(sessionStorage);
 
-  // https://console.developers.google.com/apis/credentials/oauthclient/clientId?project=clientId.projectnumb
   this.oauthService.tryLogin({
   onTokenReceived: authData => {
-  //
-  // Output just for purpose of demonstration
-  // Don't try this at home ... ;-)
-  //
-  console.log("logged in: " + authData.accessToken);
-    /*this.authService.signInUser(authData).subscribe( data => {
-     console.log('Finaly: ' + data);
-
-     });*/
+    console.log("logged in: " + authData.accessToken);
+    this.authService.signInUser(authData).subscribe( data => {
+      console.log('Finaly: ' + data);
+      this.user = this.userData;
+     });
   console.log(authData);
 }});
 console.log(this);
@@ -78,29 +74,27 @@ console.log(this);
 
     if (!claims) return "";
     this.storeHelper.update('session', claims);
-    this.user = claims;
     console.log("Given name: " + claims.given_name + ","  + claims.picture + '. Finally: ');
-    console.log(this.user);
-    //this.open('Logged in as '+ claims.given_name);
+    this.open('Logged in as '+ claims.given_name);
 
     return claims;
+
   }
 
   login() {
-    console.log(this.userData);
-    console.log("Given name: " + this.userData.given_name + ", ok");
     this.oauthService.initImplicitFlow();
   }
 
   logout() {
     console.log('Log out');
     this.oauthService.logOut();
-    this.store.purge();
-  /*  this.authService.signOutUser().subscribe( data => {
-      console.log('Finaly: ' + data);
+    this.storeHelper.update('session',null);
+    this.user = { given_name: '', picture: ''};
+   this.authService.signOutUser().subscribe( data => {
+      console.log('Finally: ' + data);
       this.storeHelper.update('session',null);
       this.open('Bye. You joined the army of then anonymous.');
-    });*/
+    });
   }
 
   open(message: string) {

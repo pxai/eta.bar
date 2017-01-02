@@ -38,4 +38,4 @@
 </md-card-subtitle>
 </md-card>
 </div>
-<comments-pagination firstPage="{{ firstDate }}" lastPage="{{ lastDate }}"></comments-pagination>
+<comments-pagination *ngIf="comments" firstPage="{{ firstDate }}" lastPage="{{ lastDate }}"></comments-pagination>

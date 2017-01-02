@@ -20,9 +20,8 @@ module.exports = function (app) {
     });
 
   app.get('/logout' ,function(req, res) {
-    var authData = req.body.idClaims;
-    req.session = null;
-    console.log('logged out user: %s', authData.email);
+    console.log('Session finished');
+    req.session.destroy();
     res.send({session: 'finished'});
 
   });
