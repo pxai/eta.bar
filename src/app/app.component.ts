@@ -53,11 +53,19 @@ export class AppComponent {
   this.oauthService.tryLogin({
   onTokenReceived: authData => {
     console.log("logged in: " + authData.accessToken);
-    this.storeHelper.update('session', authData.idClaims);
+
 
     this.authService.signInUser(authData).subscribe( data => {
-      console.log('Finaly: ' + data);
-      this.user = this.userData;
+      console.log(data);
+      if (data.valid) {
+        this.user = this.userData;
+        this.storeHelper.update('session', authData.idClaims);
+      } else {
+        console.log('Validation invalid!');
+        this.open('Validation between Backend and Google invalid!');
+      }
+
+
      });
 
 }});
