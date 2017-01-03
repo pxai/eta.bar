@@ -15,7 +15,7 @@ module.exports = function (app) {
     app.get('/api/v1/comments/last/:id/:from' ,function(req, res) {
       var questionid = req.params['id'];
       var from = new Date(req.params['from']) || new Date();
-      Comment.find({questionid: questionid, createdAt: { $gte: from }}, {}, {sort: {date: -1}, limit: 10},
+      Comment.find({questionid: questionid, createdAt: { $gte: from }}, {}, {sort: {createdAt: -1}, limit: 10},
         function (err, result) {
           if (err) { res.send('{"result":"error"}'); }
           var formatted = { 'result' : 'ok', 'data':[]};
@@ -28,7 +28,7 @@ module.exports = function (app) {
   app.get('/api/v1/comments/prev/:id/:from' ,function(req, res) {
     var questionid = req.params['id'];
     var from = new Date(req.params['from']) || new Date();
-    Comment.find({questionid: questionid, createdAt: { $lte: from }}, {}, {sort: {date: -1}, limit: 10},
+    Comment.find({questionid: questionid, createdAt: { $lte: from }}, {}, {sort: {createdAt: -1}, limit: 10},
       function (err, result) {
         if (err) { res.send('{"result":"error"}'); }
         var formatted = { 'result' : 'ok', 'data':[]};

@@ -32,7 +32,7 @@ module.exports = function (app) {
         function(err, question) {
           if (err) { res.send('{"result":"error"}'); }
           else {
-            Comment.find({questionid: question._id}, {}, {sort: {date: -1}, limit: 10},
+            Comment.find({questionid: question._id}, {}, {sort: {createdAt: -1}, limit: 10},
               function (err, result) {
                 if (err) { res.send('{"result":"error"}'); }
                 var comments = result || [];
@@ -119,7 +119,7 @@ module.exports = function (app) {
       answerid: sanitize(req.body.answerId)
     });
 
-    Vote.count( {questionid: vote.questionid, user: vote.user},
+    Vote.count( {questionid: vote.questionid, ip: ip},
       function(err, count) {
         if (count > 0) {
           console.log('YOU HAVE VOTED!! ');
