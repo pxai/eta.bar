@@ -54,7 +54,7 @@ export class AppComponent {
   onTokenReceived: authData => {
     console.log("logged in: " + authData.accessToken);
     this.storeHelper.update('session', authData.idClaims);
-    console.log("logged in and session:: " + store.session);
+
     this.authService.signInUser(authData).subscribe( data => {
       console.log('Finaly: ' + data);
       this.user = this.userData;

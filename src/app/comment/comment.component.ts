@@ -51,7 +51,8 @@ export class CommentComponent {
     let id = this.storeHelper.store.getState().question._id;
     console.log(this.text + ' in ' + id);
     this.commentService.createComment(id, this.text).subscribe(data => {
-      console.log('Ok, comment sent and received');
+      console.log('Ok, comment sent and received. Clear.' );
+      console.log(data);
       this.text = '';
     });
   }

@@ -46,7 +46,11 @@ export class CommentService {
     // var headers = new Headers();
     // headers.append('Content-type','application/json');
     return this.http.post(this.commentCreateUrl, {questionid: questionid, text: text})
-      .map(res => res.json());
+      .map(res => res.json())
+      .do( (comment: any) => {
+        this.storeHelper.add('comments', comment);
+        console.log('Comment saved: ');console.log(comment);
+      });
 
   }
 
