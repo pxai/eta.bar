@@ -6,7 +6,7 @@
    <div>
     <span *ngIf="store.getState().session != null" class="fill-remain">
             <i>Hello, {{ store.getState().session.given_name }}!</i>
-            <img src="{{ store.getState().session.picture }}" align="right" style="width:50px;height:50px;" alt="{{ store.getState().session.given_name }}'s Avatar" title="{{ user.given_name }}'s Avatar" />
+            <img src="{{ store.getState().session.picture }}" align="right" class="avatar" alt="{{ store.getState().session.given_name }}'s Avatar" title="{{ user.given_name }}'s Avatar" />
              <button md-mini-fab aria-label="Login" color="primary"(click)="logout()"><md-icon>exit_to_app</md-icon></button>
      </span>
      <span *ngIf="store.getState().session == null" class="fill-remain" >

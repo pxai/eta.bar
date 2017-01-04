@@ -58,7 +58,7 @@ export class AppComponent {
     this.authService.signInUser(authData).subscribe( data => {
       console.log(data);
       if (data.valid) {
-        this.user = this.userData;
+        //this.user = authData.idClaims;
         this.storeHelper.update('session', authData.idClaims);
       } else {
         console.log('Validation invalid!');
@@ -89,6 +89,12 @@ console.log(this);
 
     return claims;
 
+  }
+
+  get avatarImg () {
+    let image = '<img src="'+this.user.picture +'" align="right" class="avatar" alt="'+this.user.given_name+'\'s Avatar" title="'+this.user.given_name +'\'s Avatar" />';
+    console.log(image);
+    return image;
   }
 
   login() {
