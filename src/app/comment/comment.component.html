@@ -1,6 +1,6 @@
-<h3>Comments</h3>
+<h3><md-icon>comment</md-icon> Comments</h3>
 <md-card class="wide-card">
-  <md-card-subtitle>Please Sign In</md-card-subtitle>
+  <md-card-subtitle *ngIf="store.getState().session == null"><md-icon>perm_identity</md-icon>Please Sign In</md-card-subtitle>
   <md-card-content>
     <div  *ngIf="store.getState().session != null" class="main-application">
 

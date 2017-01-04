@@ -1,7 +1,8 @@
 <div class="app-content">
-  <h1 x-large class="sample-content">Home</h1>
   <md-card color="primary" class="wide-card">
-    <md-card-title>{{this.question.question }}</md-card-title>
+    <md-card-title>
+      <h1 md-display-3>{{this.question.question }}</h1>
+    </md-card-title>
     <md-card-content>
       <div class='panel panel-info' *ngIf="format == 'normal'">
         <p  *ngFor="let answer of this.question.answers">
