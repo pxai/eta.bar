@@ -30,6 +30,7 @@
 <div  *ngFor="let comment of this.comments">
 <md-card>
   <md-card-content>
+    <img src="" align="right" class="avatar" alt="{{ comment.login }}'s Avatar" title="{{ comment.login }}'s Avatar" />
     {{ comment.text }}
   </md-card-content>
   <md-card-subtitle>
