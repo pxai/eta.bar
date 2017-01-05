@@ -1,4 +1,4 @@
-<h3><md-icon>comment</md-icon> Comments</h3>
+<h3><md-icon><i class="material-icons">question_answer</i></md-icon> Comments</h3>
 <md-card class="wide-card">
   <md-card-subtitle *ngIf="store.getState().session == null"><md-icon>perm_identity</md-icon>Please Sign In</md-card-subtitle>
   <md-card-content>
@@ -6,21 +6,26 @@
 
       <div *ngIf="toggleComment==true">
         <form (ngSubmit)="submitComment()" autocomplete="off">
-
-          <md-input
+          <div>
+          <md-textarea
             placeholder="Comments here"
             autofocus
             [(ngModel)]="text"
             name="text"
             [value]="text"
-          ></md-input>
-
+          ></md-textarea>
+          </div>
+          <div>
           <button id="submit-button" md-raised-button color="accent">Send comment, {{ store.getState().session.given_name }}</button>
+          </div>
         </form>
       </div>
       <div *ngIf="toggleComment==false">
         <p>Your comment was sent</p>
-        <button id="toggle-comment" md-raised-button  (click)="toggleComment=true;">New comment</button>
+        <button id="toggle-comment" md-raised-button  (click)="toggleComment=true;">
+          <i class="material-icons">comment</i>
+          New comment
+        </button>
       </div>
     </div>
   </md-card-content>
@@ -30,7 +35,7 @@
 <div  *ngFor="let comment of this.comments">
 <md-card>
   <md-card-content>
-    <img src="" align="right" class="avatar" alt="{{ comment.login }}'s Avatar" title="{{ comment.login }}'s Avatar" />
+    <img src="" align="left" class="avatar" alt="{{ comment.login }}'s Avatar" title="{{ comment.login }}'s Avatar" />
     {{ comment.text }}
   </md-card-content>
   <md-card-subtitle>

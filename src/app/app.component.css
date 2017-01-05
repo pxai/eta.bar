@@ -2,6 +2,9 @@ html, body{
   height: 100%;
   font-family: Arial, Helvetica, sans-serif;
   margin: 0.2em;
+  background-image: url(https://static1.squarespace.com/static/52ee09c2e4b05875be7e96eb/t/53eb5901e4b01a40d5bcc7f9/1407932709947/);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 span.active {
@@ -19,12 +22,38 @@ span.active {
   display: -webkit-flex; /* Safari */
   display: flex;
   -webkit-flex-direction: row; /* Safari */
-  flex-direction:         row;
+  flex-direction: row;
+}
+
+.flex-center-container {
+  margin: 0 auto;
+  width: 80%;
 }
 
 #logo {
   flex: 1 1 auto;
 }
+
+#logo span a {
+  color: #0b97c4;
+  text-decoration: none;
+  font-family: "Lobster 1.4",Helvetica, sans-serif;
+  font-size: 3em;
+  -webkit-text-shadow: 0.2px 0.5px 5px 0px rgba(0,0,0,0.75);
+  -moz-text-shadow: 0.2px 0.5px 5px 0px rgba(0,0,0,0.75);
+  text-shadow: 0.2px 0.5px 5px 0px rgba(0,0,0,0.75);
+}
+
+#mainquestion {
+ text-align: center;
+  font-size: 2em;
+}
+
+.centercontent {
+  width: 80%;
+
+}
+
 .avatar {
   width:50px;
   height:50px;

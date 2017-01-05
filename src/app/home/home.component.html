@@ -1,9 +1,8 @@
 <div class="app-content">
-  <md-card color="primary" class="wide-card">
-    <md-card-title>
-      <h1 md-display-3>{{this.question.question }}</h1>
-    </md-card-title>
-    <md-card-content>
+  <div class="flex-center-container">
+      <div>
+       <h1 md-display-3 id="mainquestion">{{this.question.question }}</h1>
+      </div>
       <div class='panel panel-info' *ngIf="format == 'normal'">
         <p  *ngFor="let answer of this.question.answers">
           <button id="submit-button" md-raised-button color="" (click)="voteFor(this.question._id,answer)">{{ answer.answer }}</button>
@@ -18,6 +17,6 @@
       </div>
       <hr>
       <comments></comments>
-    </md-card-content>
-  </md-card>
   <hr>
+  </div>
+</div>
