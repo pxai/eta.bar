@@ -1,4 +1,4 @@
-# @AngularClass
+# eta.bar
 
 # Logs
 logs
@@ -35,6 +35,8 @@ Thumbs.db
 /bower_components
 npm-debug.log
 backend/node_modules
+backend/config/production.json
+backend/config/credentials.json
 # Coverage #
 /coverage/
 
