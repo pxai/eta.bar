@@ -29,6 +29,11 @@ span.active {
   width: 80%;
 }
 
+footer, footer a {
+  font-size: 0.9em;
+  text-align: center;
+}
+
 #logo {
   margin: 0.2em;
   flex: 1 1 auto;

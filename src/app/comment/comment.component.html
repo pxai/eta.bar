@@ -1,5 +1,8 @@
-<h3><md-icon><i class="material-icons">question_answer</i></md-icon> Comments</h3>
+
 <md-card class="wide-card">
+  <md-card-title>
+    <h3><md-icon><i class="material-icons">question_answer</i></md-icon> Comments</h3>
+  </md-card-title>
   <md-card-subtitle *ngIf="store.getState().session == null"><md-icon>perm_identity</md-icon>Please Sign In</md-card-subtitle>
   <md-card-content>
     <div  *ngIf="store.getState().session != null" class="main-application">
@@ -31,11 +34,12 @@
   </md-card-content>
 
 </md-card>
-<hr>
+
 <div  *ngFor="let comment of this.comments">
 <md-card>
   <md-card-content>
-    <img src="" align="left" class="avatar" alt="{{ comment.login }}'s Avatar" title="{{ comment.login }}'s Avatar" />
+    <md-icon>perm_identity</md-icon>
+    <!--img src="" align="left" class="avatar" alt="{{ comment.login }}'s Avatar" title="{{ comment.login }}'s Avatar" /-->
     {{ comment.text }}
   </md-card-content>
   <md-card-subtitle>
@@ -44,4 +48,4 @@
 </md-card-subtitle>
 </md-card>
 </div>
-<comments-pagination *ngIf="comments" firstPage="{{ firstDate }}" lastPage="{{ lastDate }}"></comments-pagination>
+<comments-pagination *ngIf="comments.length > 0" firstPage="{{ firstDate }}" lastPage="{{ lastDate }}"></comments-pagination>
