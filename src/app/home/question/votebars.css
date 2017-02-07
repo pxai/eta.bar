@@ -1,40 +1,50 @@
-body {
-  background-color: #aaa;
-  padding: 10px;
-}
 
 #progressbar {
   width: 100%;
-  height: 15px;
-  /*background-color: #eee;*/
+  height: 2em;
   padding: 2px;
   margin: .6em 0;
-  /* border: 1px #000 double;*/
   clear: both;
 }
 
-#progress1 {
-  background: #A1C969; /*-- Color of the bar --*/
-  height: 15px;
+#progressbar > div {
+  height: 2em;
   width: 0%;
   max-width: 100%;
   float: left;
-  -webkit-animation: progress 2s 1 forwards;
-  -moz-animation: progress 2s 1 forwards;
-  -ms-animation: progress 2s 1 forwards;
-  animation: progress 2s 1 forwards;
+
+}
+
+#progress1 {
+  background: #A10069; /*-- Color of the bar --*/
+  -webkit-animation: p1 2s 1 forwards;
+  -moz-animation: p1 2s 1 forwards;
+  -ms-animation: p1 2s 1 forwards;
+  animation: p1 2s 1 forwards;
 }
 
 #progress2 {
   background: #FECCDE; /*-- Color of the bar --*/
-  height: 15px;
-  width: 0%;
-  max-width: 100%;
-  float: left;
-  -webkit-animation: progress 2s 1 forwards;
-  -moz-animation: progress 2s 1 forwards;
-  -ms-animation: progress 2s 1 forwards;
-  animation: progress 2s 1 forwards;
+  -webkit-animation: p2 2s 1 forwards;
+  -moz-animation: p2 2s 1 forwards;
+  -ms-animation: p2 2s 1 forwards;
+  animation: p2 2s 1 forwards;
+}
+
+#progress3 {
+  background: #CCFFDE; /*-- Color of the bar --*/
+}
+
+#progress4 {
+  background: #CCDEFE; /*-- Color of the bar --*/
+}
+
+#progress5 {
+  background: #CCFFDE; /*-- Color of the bar --*/
+}
+
+#progress6 {
+  background: #CCDEFE; /*-- Color of the bar --*/
 }
 
 #pbaranim {
@@ -50,26 +60,58 @@ body {
   filter: alpha(opacity=25);
 }
 
-@-webkit-keyframes progress {
+@-webkit-keyframes p1{
   from { }
-
   to { width: 66% }
 }
 
-@-moz-keyframes progress {
+@-moz-keyframes p1{
   from { }
-
+  to { width: 66% }
+}
+@-ms-keyframes p1{
+  from { }
+  to { width: 66% }
+}
+@keyframes p1
+{
+  from { }
   to { width: 66% }
 }
 
-@-ms-keyframes progress {
+@-webkit-keyframes p2 {
   from { }
+  to { width: 36% }
+}
+@-moz-keyframes p2 {
+  from { }
+  to { width: 36% }
+}
+@-ms-keyframes p2{
+  from { }
+  to { width: 36% }
+}
+@keyframes p2
+{
+  from { }
+  to { width: 36% }
+}
 
+@-webkit-keyframes progress{
+  from { }
+  to { width: 66% }
+}
+@-moz-keyframes progress{
+  from { }
+  to { width: 66% }
+}
+@-ms-keyframes progress{
+  from { }
+  to { width: 66% }
+}
+@keyframes progress
+{
+  from { }
   to { width: 66% }
 }
 
-@keyframes progress {
-  from { }
-
-  to { width: 66% }
-}
