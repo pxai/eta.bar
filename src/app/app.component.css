@@ -1,9 +1,11 @@
-html, body{
-  height: 100%;
-  font-family: Arial, Helvetica, sans-serif;
-  background-image: url(https://static1.squarespace.com/static/52ee09c2e4b05875be7e96eb/t/53eb5901e4b01a40d5bcc7f9/1407932709947/);
+html {
+  background-image: url(../assets/img/background-1.png);
   background-repeat: no-repeat;
   background-size: cover;
+}
+body{
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 span.active {
