@@ -30,7 +30,9 @@ export class HomeComponent {
   localState = { value: '' };
   public format: string = "normal";
   public question: Question;
+  public totalVotes = 0;
   public votes = [];
+  public votesPercentage = [];
 
   // TypeScript public modifiers
   constructor(public appState: AppState, public title: Title,
@@ -43,6 +45,7 @@ export class HomeComponent {
 
   ngOnInit() {
     this.question = new Question();
+    this.totalVotes = 0;
     console.log('hello `Home` component');
     // Without store
     // this.questionService.getLatest().subscribe(data => this.question = data);
@@ -76,6 +79,7 @@ export class HomeComponent {
   }
 
   voteFor(_id: number, answer) {
+
     console.log('You voted for ' + _id+ ', answer: ' + answer.id);
     this.questionService.getResult(_id, answer.id).subscribe(data => {
       //this.question = data.question;
@@ -85,13 +89,19 @@ export class HomeComponent {
       this.votes = [];
       for (var i = 0; i < this.question.answers.length;i++) {
         this.votes[i] = 0;
+        this.votesPercentage[i] = 0;
       }
 
       for (var i = 0; i < data.length;i++) {
         this.votes[data[i]._id.answerid] = data[i].count;
+        this.totalVotes = this.totalVotes + data[i].count;
       }
 
+      for (var i = 0; i < this.question.answers.length;i++) {
+        this.votesPercentage[i] = Math.round((this.votes[i] * 100) / this.totalVotes);
+      }
       console.log(this.votes);
+      console.log(this.votesPercentage);
     });
   }
 

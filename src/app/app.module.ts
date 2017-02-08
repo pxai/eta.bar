@@ -27,6 +27,7 @@ import { AuthComponent } from './auth/index.ts';
 import { MissingPageComponent } from './missing-page';
 import { XLarge } from './home/x-large';
 import { OAuthService } from 'angular2-oauth2/oauth-service';
+import {VotebarsComponent} from "./home/question/votebars.component";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -56,6 +57,7 @@ type StoreType = {
     HomeComponent,
     CreateComponent,
     CommentComponent,
+    VotebarsComponent,
     PaginationComponent,
     AuthComponent,
     MissingPageComponent,
