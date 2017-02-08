@@ -1,5 +1,5 @@
 
-<md-card class="wide-card">
+<md-card class="wide-card" id="comments">
   <md-card-title>
     <h3><md-icon><i class="material-icons">question_answer</i></md-icon> Comments</h3>
   </md-card-title>
@@ -36,7 +36,7 @@
 </md-card>
 
 <div  *ngFor="let comment of this.comments">
-<md-card>
+<md-card class="comment">
   <md-card-content>
     <md-icon>perm_identity</md-icon>
     <!--img src="" align="left" class="avatar" alt="{{ comment.login }}'s Avatar" title="{{ comment.login }}'s Avatar" /-->

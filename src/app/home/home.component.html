@@ -9,7 +9,7 @@
         </p>
       </div>
       <div class='panel panel-info shadow-2' *ngIf="format != 'normal'">
-        <votebars votes="{{votesPercentage}}" totalVotes="{{totalVotes}}"></votebars>
+        <votebars [totalPercentage]="this.votesPercentage" [questions]="this.question.answers" totalVotes="{{totalVotes}}"></votebars>
       </div>
       <comments></comments>
   </div>
