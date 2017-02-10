@@ -48,11 +48,12 @@ footer, footer a {
   font-size: 3em;
   -webkit-text-shadow: 0.2px 0.5px 5px 0px rgba(255,255,255,0.75);
   -moz-text-shadow: 0.2px 0.5px 5px 0px rgba(255,255,255,0.75);
-  text-shadow: 0.2px 0.5px 5px 0px rgba(255,255,255,0.75);
+  text-shadow: -0.2px -0.5px gray, 1.5px 1.5px rgba(55,55,55,0.75);
 }
 
 #mainquestion {
  text-align: center;
+  text-shadow: -1px -1px white, 1px 1px #333;
   font-size: 2em;
 }
 
@@ -94,4 +95,10 @@ div.subtitle {
   -webkit-box-shadow: 0.2px 0.5px 5px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 0.2px 0.5px 5px 0px rgba(0,0,0,0.75);
   box-shadow: 0.2px 0.5px 5px 0px rgba(0,0,0,0.75);
+}
+
+.about {
+  text-align: center;
+  margin: 2em;
+  width: 80%;
 }
