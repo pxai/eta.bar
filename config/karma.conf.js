@@ -14,6 +14,9 @@ module.exports = function(config) {
     	'karma-coverage',
       	'karma-chrome-launcher',
         'karma-webpack',
+    'karma-mocha-reporter',
+    'karma-remap-coverage',
+    'karma-sourcemap-loader'
 	],
     /*
      * Frameworks to use
