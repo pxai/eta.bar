@@ -60,14 +60,16 @@ footer, footer a {
   float: left;
 
 }
-div#title {
+div.title {
   max-width: 20%;
-  font-size: 2em;
+  font-size: 1em;
 }
 
-div#subtitle {
+div.subtitle {
   width: 30%;
-  font-size: 0.9em;
+  margin-left: 2em;
+  color: gray;
+  font-size: 0.6em;
 }
 
 .comment {
