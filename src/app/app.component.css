@@ -62,7 +62,8 @@ footer, footer a {
 
 }
 div.title {
-  max-width: 20%;
+  min-width: 30%;
+  max-width: 40%;
   font-size: 1em;
 }
 

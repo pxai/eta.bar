@@ -30,7 +30,7 @@ export class QuestionService {
   public getLatest(q: string ='') {
     console.log('Title#getData(): Get Latest from back-end');
 
-    this.questionGetUrl += (q!='')?'q/'+q:'last';
+    this.questionGetUrl = '/api/v1/question/' + ((q!='')?'q/'+q:'last');
     // We add the method to save question in the store.
     // The operation is immutable for data
      return this.http.get(this.questionGetUrl)
