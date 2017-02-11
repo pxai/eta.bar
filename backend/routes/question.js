@@ -51,6 +51,32 @@ module.exports = function (app) {
 
     });
 
+  app.get('/api/v1/question/q/:question' ,function(req, res) {
+    req.session.user =  !req.session.user?anonymousUser:req.session.user;
+    console.log('Question : ' + req.params.question);
+    Question.findOne({permalink: req.params.question},{},{sort: {createdAt: -1}},
+      function(err, question) {
+        if (err) { res.send('{"result":"error"}'); }
+        else {
+          Comment.find({questionid: question._id}, {}, {sort: {createdAt: -1}, limit: 10},
+            function (err, result) {
+              if (err) { res.send('{"result":"error"}'); }
+              var comments = result || [];
+              var session = req.session.authData || null;
+              if (session != null) {
+                console.log('RECOVER SESSION DATA!!!');
+              } else {
+                console.log('SESSION NULL??');
+                console.log(req.session.authData);
+              }
+              console.log('Loaded comments: ' + comments.length);
+              res.send({question: question, comments: comments, session : session});
+            });
+        }
+      });
+
+  });
+
   app.post('/api/v1/question/vote' ,function(req, res) {
       var vote = new Vote({
         user: req.session.login,

@@ -20,7 +20,7 @@ export class QuestionService {
   }];
 
   //private questionGetUrl : string = '/assets/question.json';
-  private questionGetUrl : string = '/api/v1/question/last';
+  private questionGetUrl : string = '/api/v1/question/';
   private resultGetUrl : string = '/api/v1/question/vote';
 
   constructor(private http: Http, private storeHelper: StoreHelper) {
@@ -29,6 +29,8 @@ export class QuestionService {
 
   public getLatest(q: string ='') {
     console.log('Title#getData(): Get Latest from back-end');
+
+    this.questionGetUrl += (q!='')?'q/'+q:'last';
     // We add the method to save question in the store.
     // The operation is immutable for data
      return this.http.get(this.questionGetUrl)
