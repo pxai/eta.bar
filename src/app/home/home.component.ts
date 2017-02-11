@@ -8,6 +8,8 @@ import { XLarge } from './x-large';
 import { OAuthService } from 'angular2-oauth2/oauth-service';
 import { Store } from '../app.store';
 import { StoreHelper } from '../store-helper';
+import {Params, ActivatedRoute} from "@angular/router";
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   // The selector is what angular internally uses
@@ -33,11 +35,14 @@ export class HomeComponent {
   public totalVotes = 0;
   public votes = [];
   public votesPercentage = [];
+  public questionName = '';
+  private sub: Subscription;
 
   // TypeScript public modifiers
   constructor(public appState: AppState, public title: Title,
               public questionService: QuestionService,
               private commentService: CommentService,
+              private route: ActivatedRoute,
               private store: Store,
               private storeHelper: StoreHelper,
               private oauthService: OAuthService) {
@@ -49,18 +54,37 @@ export class HomeComponent {
     console.log('hello `Home` component');
     // Without store
     // this.questionService.getLatest().subscribe(data => this.question = data);
+// assign the subscription to a variable so we can unsubscribe to prevent memory leaks
+
+
+    this.route.params
+        .subscribe((params: Params) => (this.questionService.getLatest(params['q']))
+        .subscribe((data: any) =>  {
+          console.log('First request: ');
+          console.log(data);
+          if (data.session != null) {
+            this.storeHelper.update('session', data.session);
+            console.log('Previous session recovered ');
+          } else {
+            console.log('No session stablished');
+          }
+        })
+        );
+     // .subscribe((hero: Hero) => this.hero = hero);
+
+    console.log("Question" + this.questionName);
 
     // We get the latests and we just subscribe
-    this.questionService.getLatest().subscribe((data: any) =>  {
-      console.log('First request: ');
-      console.log(data);
-      if (data.session != null) {
-        this.storeHelper.update('session', data.session);
-        console.log('Previous session recovered ');
-      } else {
-        console.log('No session stablished');
-      }
-    });
+    // this.questionService.getLatest().subscribe((data: any) =>  {
+    //   console.log('First request: ');
+    //   console.log(data);
+    //   if (data.session != null) {
+    //     this.storeHelper.update('session', data.session);
+    //     console.log('Previous session recovered ');
+    //   } else {
+    //     console.log('No session stablished');
+    //   }
+    // });
 
     // subscribe to the store, so other operations just need to subscribe
     this.store.changes //.pluck('question')

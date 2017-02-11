@@ -27,7 +27,7 @@ export class QuestionService {
 
   }
 
-  public getLatest() {
+  public getLatest(q: string ='') {
     console.log('Title#getData(): Get Latest from back-end');
     // We add the method to save question in the store.
     // The operation is immutable for data

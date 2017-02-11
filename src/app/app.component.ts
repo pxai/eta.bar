@@ -59,6 +59,7 @@ export class AppComponent {
       console.log(data);
       if (data.valid) {
         //this.user = authData.idClaims;
+        this.open('Logged in!');
         this.storeHelper.update('session', authData.idClaims);
       } else {
         console.log('Validation invalid!');
