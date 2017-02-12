@@ -31,6 +31,16 @@ span.active {
   width: 80%;
 }
 
+.flex-center-container div.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-center-container div.buttons div {
+  max-width: 50%;
+}
+
 footer, footer a {
   font-size: 0.9em;
   text-align: center;
@@ -53,6 +63,7 @@ footer, footer a {
 
 #mainquestion {
  text-align: center;
+  font-family: "Lobster 1.4",Helvetica, sans-serif;
   text-shadow: -1px -1px white, 1px 1px #333;
   font-size: 2em;
 }
@@ -65,6 +76,7 @@ div.title {
   min-width: 30%;
   max-width: 40%;
   font-size: 1em;
+  font-family: "Lobster 1.4",Helvetica, sans-serif;
 }
 
 div.subtitle {
