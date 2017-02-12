@@ -3,8 +3,8 @@
   <md-card-title>
 
     <div id="commentheader" class="centerdiv">
-      <div class="title"><md-icon><i class="material-icons">question_answer</i></md-icon> Comments </div>
-      <div class="subtitle" *ngIf="store.getState().session == null"><md-icon>perm_identity</md-icon>Please Sign In</div>
+      <div class="title"><md-icon><i class="material-icons">question_answer</i></md-icon> <span i18n>Comments</span></div>
+      <div class="subtitle" *ngIf="store.getState().session == null"><md-icon>perm_identity</md-icon><span i18n>Please Sign In</span></div>
     </div>
   </md-card-title>
   <md-card-content>

@@ -59,7 +59,7 @@ export class AppComponent {
       console.log(data);
       if (data.valid) {
         //this.user = authData.idClaims;
-        this.open('Logged in!');
+        this.open('Logged in as ' + authData.idClaims.given_name);
         this.storeHelper.update('session', authData.idClaims);
       } else {
         console.log('Validation invalid!');
@@ -110,7 +110,7 @@ console.log(this);
    this.authService.signOutUser().subscribe( data => {
       console.log('Finally: ' + data);
       this.storeHelper.update('session',null);
-      this.open('Bye. You joined the army of then anonymous.');
+      this.open('Bye. You joined the army of the anonymous.');
     });
   }
 

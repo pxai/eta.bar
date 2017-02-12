@@ -22,6 +22,7 @@ export class QuestionService {
   //private questionGetUrl : string = '/assets/question.json';
   private questionGetUrl : string = '/api/v1/question/';
   private resultGetUrl : string = '/api/v1/question/vote';
+  private lastQuestionsGetUrl : string = '/api/v1/question/latest';
 
   constructor(private http: Http, private storeHelper: StoreHelper) {
 
@@ -55,6 +56,15 @@ export class QuestionService {
 
   }
 
+
+  public getLatestQuestions(skip: number = 0) {
+    console.log('Get Latest questions');
+    //var headers = new Headers();
+    //headers.append('Content-type','application/json');
+    return this.http.get(this.lastQuestionsGetUrl+"/"+skip)
+      .map(res => res.json());
+
+  }
   /*
   * when creating
   * ...post()
