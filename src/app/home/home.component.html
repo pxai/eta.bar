@@ -6,7 +6,7 @@
       <div class='panel buttons panel-info' *ngIf="format == 'normal'">
         <div>
         <p  *ngFor="let answer of this.question.answers">
-            <button id="submit-button" md-raised-button color="" (click)="voteFor(this.question._id,answer)">
+            <button class="answer" id="submit-button" md-raised-button color="" (click)="voteFor(this.question._id,answer)">
               {{ answer.answer }}
             </button>
         </p>

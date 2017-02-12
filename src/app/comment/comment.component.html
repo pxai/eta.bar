@@ -2,13 +2,13 @@
 <md-card class="wide-card" id="comments">
   <md-card-title>
 
-    <div id="commentheader">
+    <div id="commentheader" class="centerdiv">
       <div class="title"><md-icon><i class="material-icons">question_answer</i></md-icon> Comments </div>
       <div class="subtitle" *ngIf="store.getState().session == null"><md-icon>perm_identity</md-icon>Please Sign In</div>
     </div>
   </md-card-title>
   <md-card-content>
-    <div  *ngIf="store.getState().session != null" class="main-application">
+    <div *ngIf="store.getState().session != null" class="main-application centerdiv">
 
       <div *ngIf="toggleComment==true">
         <form (ngSubmit)="submitComment()" autocomplete="off">
@@ -19,11 +19,14 @@
             [(ngModel)]="text"
             name="text"
             [value]="text"
+            cols="60"
+            rows="5"
           ></md-textarea>
+            <div>
+              <button id="submit-button" md-raised-button color="accent">Send comment, {{ store.getState().session.given_name }}</button>
+            </div>
           </div>
-          <div>
-          <button id="submit-button" md-raised-button color="accent">Send comment, {{ store.getState().session.given_name }}</button>
-          </div>
+
         </form>
       </div>
       <div *ngIf="toggleComment==false">

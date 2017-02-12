@@ -26,6 +26,7 @@ keyframes progress-bar {
 div.percentage {
   padding: 0.4em;
   float: left;
+  font-family: "Lobster 1.4",Helvetica, sans-serif;
 }
 
 .questionText {
@@ -35,6 +36,8 @@ div.percentage {
   text-align: right;
   font-weight: bold;
   float: left;
+  font-size: 1.2em;
+  font-family: "Lobster 1.4",Helvetica, sans-serif;
 }
 
 .progress-bar  .bar {

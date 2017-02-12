@@ -68,20 +68,37 @@ footer, footer a {
   font-size: 2em;
 }
 
+button.answer {
+  display: block;
+  min-width: 500px;
+  max-width: 700px;
+  padding: 0.5em;
+  font-size: 1.2em;
+  font-family: "Lobster 1.4",Helvetica, sans-serif;
+  color: rgba(10,60,150, 0.8);
+  text-shadow: 1px 4px 6px #def,  1px 4px 6px #def;
+  background-color: rgba(255,255,255,0.5);
+}
+
+button.answer:hover {
+  color: rgba(10,60,150, 0.8);
+  background-color: rgba(255,255,255,1);
+}
+
 #commentheader div {
-  float: left;
+ /* float: left;*/
 
 }
 div.title {
-  min-width: 30%;
-  max-width: 40%;
+ /* min-width: 30%;
+  max-width: 40%;*/
   font-size: 1em;
   font-family: "Lobster 1.4",Helvetica, sans-serif;
 }
 
 div.subtitle {
-  width: 30%;
-  margin-left: 2em;
+  /*width: 30%;
+  margin-left: 2em;*/
   color: gray;
   font-size: 0.6em;
 }
@@ -98,6 +115,16 @@ div.subtitle {
 .centercontent {
   width: 80%;
 
+}
+
+.centerdiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.centerdiv div {
+  min-width: 50%;
 }
 
 .avatar {
