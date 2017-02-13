@@ -1,5 +1,5 @@
 <div>
   Last questions
-  <div  *ngFor="let questions of this.questions;let i=index">
-    <div><a [routerLink]="question/{question.permalink}">{question.question}</a></div>
+  <div  *ngFor="let question of this.questions;let i=index">
+    <div><a href="/#/question/{{question.permalink}}">{{question.question}}</a></div>
 </div>
