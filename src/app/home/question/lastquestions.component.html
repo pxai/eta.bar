@@ -1,5 +1,10 @@
-<div>
-  Last questions
+<md-card class="wide-card" id="lastquestions">
+  <md-card-title>
+    <md-icon>question_answer</md-icon> Last questions..
+  </md-card-title>
+  <md-card-content>
   <div  *ngFor="let question of this.questions;let i=index">
     <div><a href="/#/question/{{question.permalink}}">{{question.question}}</a></div>
-</div>
+  </div>
+  </md-card-content>
+</md-card>

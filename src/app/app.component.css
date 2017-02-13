@@ -137,6 +137,23 @@ div.subtitle {
   box-shadow: 0.2px 0.5px 5px 0px rgba(0,0,0,0.75);
 }
 
+#lastquestions {
+  font-size: 1em;
+  font-family: "Lobster 1.4",Helvetica, sans-serif;
+}
+
+#lastquestions md-card-title {
+  font-size: 1.2em;
+}
+
+#lastquestions a {
+  text-decoration: none;
+}
+
+#lastquestions a:hover {
+  color: blue;
+}
+
 .about {
   text-align: center;
   margin: 2em;
