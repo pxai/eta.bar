@@ -3,8 +3,8 @@
   <md-card-title>
 
     <div id="commentheader" class="centerdiv">
-      <div class="title"><md-icon><i class="material-icons">question_answer</i></md-icon> <span i18n>Comments</span></div>
-      <div class="subtitle" *ngIf="store.getState().session == null"><md-icon>perm_identity</md-icon><span i18n>Please Sign In</span></div>
+      <div class="title"><md-icon><i class="material-icons">question_answer</i></md-icon> <span i18n>Komentarioak</span></div>
+      <div class="subtitle" *ngIf="store.getState().session == null"><md-icon>perm_identity</md-icon><span i18n>Komentatzeko, sartu</span></div>
     </div>
   </md-card-title>
   <md-card-content>
@@ -14,7 +14,8 @@
         <form (ngSubmit)="submitComment()" autocomplete="off">
           <div>
           <md-textarea
-            placeholder="Comments here"
+            i18n-placeholder
+            placeholder="Idatzi komentarioa hemen"
             autofocus
             [(ngModel)]="text"
             name="text"
@@ -30,10 +31,10 @@
         </form>
       </div>
       <div *ngIf="toggleComment==false">
-        <p>Your comment was sent</p>
+        <p i18n>Komentarioa bidalita!</p>
         <button id="toggle-comment" md-raised-button  (click)="toggleComment=true;">
           <i class="material-icons">comment</i>
-          New comment
+          <span i18n>Komentario berria</span>
         </button>
       </div>
     </div>
