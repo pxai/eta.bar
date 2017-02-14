@@ -105,6 +105,17 @@ div.subtitle {
   font-size: 0.6em;
 }
 
+#commentheader {
+  text-shadow: 1px 4px 6px #def,  1px 4px 6px #def;
+}
+#commentheader div.title {
+  font-size: 1.5em;
+}
+
+#commentheader div.subtitle {
+  font-size: 0.8em;
+}
+
 .comment {
   clear: both;
   background-color: rgba(255,255,255,0.5);
@@ -112,7 +123,7 @@ div.subtitle {
 
 .comment {
   width: 90%;
-  margin: 2em;
+  margin: 2em;f
 }
 .centercontent {
   width: 80%;
