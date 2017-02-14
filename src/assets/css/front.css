@@ -1,0 +1,25 @@
+#frontpage {
+  position:absolute;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  display-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #0b97c4;
+}
+#frontpage .row {
+  width: auto;
+}
+
+#frontpage .row #logofp {
+  width: 20%;
+  margin: 0.2em;
+  flex: 1 1 auto;
+  color: white;
+  text-decoration: none;
+  font-family: "Lobster 1.4",Helvetica, sans-serif;
+  font-size: 4em;
+}

@@ -8,6 +8,7 @@
   <title><%= htmlWebpackPlugin.options.title %></title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
   <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+  <link href="assets/css/front.css" rel="stylesheet">
   <meta name="description" content="<%= htmlWebpackPlugin.options.title %>">
 
   <% if (webpackConfig.htmlElements.headTags) { %>
@@ -25,9 +26,11 @@
 
   <app>
     <div id="frontpage">
-        <span id="logofp">
+      <div class="row">
+        <div id="logofp">
          eta.bar...
-        </span>
+        </div>
+      </div>
     </div>
   </app>
 

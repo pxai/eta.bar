@@ -46,22 +46,7 @@ footer, footer a {
   text-align: center;
 }
 
-#frontpage {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #0b97c4;
-}
 
-#frontpage #logofp {
-  margin: 0.2em;
-  flex: 1 1 auto;
-  color: white;
-  text-decoration: none;
-  font-family: "Lobster 1.4",Helvetica, sans-serif;
-  font-size: 4em;
-}
 
 #logo {
   margin: 0.2em;
