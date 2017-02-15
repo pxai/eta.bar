@@ -1,0 +1,8 @@
+
+<div>
+  <div  *ngFor="let percentage of this.totalPercentage;let i=index">
+  <div class="progress-bar">
+    <div class="questionText">{{questions[i].answer}}</div><div class="bar" [ngStyle]="{'width': (percentage/2)+'%', 'background-color': this.colors[i]}"></div><div class="percentage">{{percentage}}%</div>
+  </div>
+</div>
+<div style="clear:both;margin-bottom: 2em;"></div>
