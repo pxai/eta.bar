@@ -4,8 +4,8 @@
   </md-card-title>
   <md-card-content>
   <div  *ngFor="let question of this.questions;let i=index">
-    <!--div><a href="/#/question/{{question.permalink}}"  fragment="mainquestion">{{question.question}}</a></div-->
-    <div><a [routerLink]="['question', question.permalink]"  fragment="logo">{{question.question}}</a></div>
+    <div><a href="/#/question/{{question.permalink}}"  onclick="window.scrollTo(0,0)" fragment="logo">{{question.question}}</a></div>
+
   </div>
   </md-card-content>
 </md-card>
