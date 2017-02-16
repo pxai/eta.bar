@@ -98,13 +98,6 @@ div.title {
   font-family: "Lobster 1.4",Helvetica, sans-serif;
 }
 
-div.subtitle {
-  /*width: 30%;
-  margin-left: 2em;*/
-  color: gray;
-  font-size: 0.6em;
-}
-
 #commentheader {
   text-shadow: 1px 4px 6px #def,  1px 4px 6px #def;
 }
@@ -114,6 +107,7 @@ div.subtitle {
 
 #commentheader div.subtitle {
   font-size: 0.8em;
+  color: darkslategray;
 }
 
 .comment {
