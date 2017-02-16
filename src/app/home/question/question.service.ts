@@ -22,6 +22,7 @@ export class QuestionService {
   //private questionGetUrl : string = '/assets/question.json';
   private questionGetUrl : string = '/api/v1/question/';
   private resultGetUrl : string = '/api/v1/question/vote';
+  private resultAnonymousGetUrl : string = '/api/v1/question/anonymous/vote';
   private lastQuestionsGetUrl : string = '/api/v1/question/latest';
 
   constructor(private http: Http, private storeHelper: StoreHelper) {
@@ -49,6 +50,7 @@ export class QuestionService {
 
   public getResult(id: number, answerId: number) {
     console.log('Get result after vote');
+
     //var headers = new Headers();
     //headers.append('Content-type','application/json');
     return this.http.post(this.resultGetUrl,{questionid: id, answerId: answerId})

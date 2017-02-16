@@ -85,10 +85,11 @@ module.exports = function (app) {
         answerid: sanitize(req.body.answerId)
       });
 
-      Vote.count( {questionid: vote.questionid, user: vote.user},
+      var checkCountCondition = (req.session.login!=undefined)?{questionid: vote.questionid, user: vote.user}:{questionid: vote.questionid, ip: req.ip};
+      Vote.count( checkCountCondition,
         function(err, count) {
           if (count > 0) {
-            console.log('YOU HAVE VOTED!! ');
+            console.log('YOU HAVE VOTED!! ip:' + req.ip + ' user:' + req.session.login);
             Vote.aggregate(
               {$match: {questionid: vote.questionid}},
               {$project: {answerid: 1, questionid:1, _id: 0}},
@@ -148,7 +149,7 @@ module.exports = function (app) {
     Vote.count( {questionid: vote.questionid, ip: ip},
       function(err, count) {
         if (count > 0) {
-          console.log('YOU HAVE VOTED!! ');
+          console.log('YOU HAVE VOTED ANONYMOUSLY!! ' + req.ip);
           Vote.aggregate(
             {$match: {questionid: vote.questionid}},
             {$project: {answerid: 1, questionid:1, _id: 0}},

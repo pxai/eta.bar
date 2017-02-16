@@ -24,7 +24,7 @@
             rows="5"
           ></md-textarea>
             <div>
-              <button id="submit-button" md-raised-button color="accent">Send comment, {{ store.getState().session.given_name }}</button>
+              <button id="submit-button" md-raised-button color="accent">{{ store.getState().session.given_name }}, <span i18n>bidali ba komentarioa</span></button>
             </div>
           </div>
 

@@ -59,11 +59,11 @@ export class AppComponent {
       console.log(data);
       if (data.valid) {
         //this.user = authData.idClaims;
-        this.open('Logged in as ' + authData.idClaims.given_name);
+        this.open(authData.idClaims.given_name + ' bezala sartuta');
         this.storeHelper.update('session', authData.idClaims);
       } else {
         console.log('Validation invalid!');
-        this.open('Validation between Backend and Google invalid!');
+        this.open('Ezin izan da erabiltzailea baieztatu!');
       }
 
 
@@ -86,7 +86,7 @@ console.log(this);
     if (!claims) return "";
 
     console.log("Given name: " + claims.given_name + ","  + claims.picture + '. Finally: ');
-    this.open('Logged in as '+ claims.given_name);
+    this.open(claims.given_name + ' bezala sartuta');
 
     return claims;
 
@@ -110,7 +110,7 @@ console.log(this);
    this.authService.signOutUser().subscribe( data => {
       console.log('Finally: ' + data);
       this.storeHelper.update('session',null);
-      this.open('Bye. You joined the army of the anonymous.');
+      this.open('Adio, egongo gatxik!');
     });
   }
 

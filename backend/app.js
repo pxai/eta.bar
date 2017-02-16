@@ -23,6 +23,7 @@ var middleware = require('./middleware');
 
 var app = express();
 
+app.set('trust proxy', 1);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'pug');
 
