@@ -10,9 +10,11 @@ var home = require('./home');
 var user = require('./user');
 var question = require('./question');
 var comment = require('./comment');
+var rss = require('./rss');
 module.exports = function (app) {
     home(app);
     user(app);
     question(app);
     comment(app);
+    rss(app);
 }

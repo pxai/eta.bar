@@ -15,6 +15,29 @@
       <div class='panel panel-info shadow-2' *ngIf="format != 'normal'">
         <votebars [totalPercentage]="this.votesPercentage" [questions]="this.question.answers" totalVotes="{{totalVotes}}"></votebars>
       </div>
+    <div class='panel buttons panel-info' id="socialbuttons">
+      <span>
+      <a href="whatsapp://send?text={{this.question.question}} Bozkatu hemen http://eta.bar/#/question/{{this.question.permalink}}" title="Watxapeatu" data-action="share/whatsapp/share">
+        <img src="assets/img/WhatsApp.png" title="Watxapeatu!" alt="WhatsApp logo"/>
+      </a>
+      </span>
+      <span>
+        <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text={{this.question.question}} Bozkatu hemen http://eta.bar/#/question/{{this.question.permalink}}"
+           data-size="large">
+        <img src="assets/img/Twitter.png" title="Txiokatu!" alt="Twitter logo"/>
+      </a>
+      </span>
+      <span>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://eta.bar/#/question/{{this.question.permalink}}" title="Facebookeatu">
+        <img src="assets/img/Facebook.png" title="Watxapeatu!" alt="Facebook logo"/>
+      </a>
+      </span>
+      <span>
+      <a href="https://plus.google.com/share?url=http://eta.bar/#/question/{{this.question.permalink}}" title="Gugleatu" >
+        <img src="assets/img/Google.png" title="Gugleatu!!" alt="Google+ logo"/>
+      </a>
+      </span>
+    </div>
       <comments></comments>
       <last-questions></last-questions>
   </div>

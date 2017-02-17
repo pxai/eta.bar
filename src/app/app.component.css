@@ -98,6 +98,11 @@ div.title {
   font-family: "Lobster 1.4",Helvetica, sans-serif;
 }
 
+#socialbuttons span {
+  display: inlline-block;
+  margin: 1em 2em;
+}
+
 #commentheader {
   text-shadow: 1px 4px 6px #def,  1px 4px 6px #def;
 }
