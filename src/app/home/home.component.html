@@ -2,22 +2,23 @@
   <div class="flex-center-container">
       <div>
        <h1 md-display-3 id="mainquestion">{{this.question.question }}</h1>
-      </div>
-      <div class='panel buttons panel-info' *ngIf="format == 'normal'">
-        <div>
-        <p  *ngFor="let answer of this.question.answers">
-            <button class="answer" id="submit-button" md-raised-button color="" (click)="voteFor(this.question._id,answer)">
-              {{ answer.answer }}
-            </button>
-        </p>
+
+        <div class='buttons' *ngIf="format == 'normal'">
+          <div>
+          <p  *ngFor="let answer of this.question.answers">
+              <button class="answer" id="submit-button" md-raised-button color="" (click)="voteFor(this.question._id,answer)">
+                {{ answer.answer }}
+              </button>
+          </p>
+          </div>
         </div>
-      </div>
-      <div class='panel panel-info shadow-2' *ngIf="format != 'normal'">
-        <votebars [totalPercentage]="this.votesPercentage" [questions]="this.question.answers" totalVotes="{{totalVotes}}"></votebars>
+        <div class='shadow-2' *ngIf="format != 'normal'">
+          <votebars [totalPercentage]="this.votesPercentage" [questions]="this.question.answers" totalVotes="{{totalVotes}}"></votebars>
+        </div>
       </div>
     <div class='panel buttons panel-info' id="socialbuttons">
       <span>
-      <a href="whatsapp://send?text={{this.question.question}} Bozkatu hemen http://eta.bar/#/question/{{this.question.permalink}}" title="Watxapeatu" data-action="share/whatsapp/share">
+      <a [href]="sanitize('whatsapp://send?text='+ this.question.question +' Bozkatu hemen http://eta.bar/%23/question/'+this.question.permalink)" data-action="share/whatsapp/share">
         <img src="assets/img/WhatsApp.png" title="Watxapeatu!" alt="WhatsApp logo"/>
       </a>
       </span>
@@ -28,12 +29,12 @@
       </a>
       </span>
       <span>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=http://eta.bar/#/question/{{this.question.permalink}}" title="Facebookeatu">
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://eta.bar/%23/question/{{this.question.permalink}}" title="Facebookeatu">
         <img src="assets/img/Facebook.png" title="Watxapeatu!" alt="Facebook logo"/>
       </a>
       </span>
       <span>
-      <a href="https://plus.google.com/share?url=http://eta.bar/#/question/{{this.question.permalink}}" title="Gugleatu" >
+      <a href="https://plus.google.com/share?url=http://eta.bar/%23/question/{{this.question.permalink}}&text={{this.question.question}} Bozkatu hemen" title="Gugleatu" >
         <img src="assets/img/Google.png" title="Gugleatu!!" alt="Google+ logo"/>
       </a>
       </span>

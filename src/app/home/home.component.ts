@@ -10,6 +10,7 @@ import { Store } from '../app.store';
 import { StoreHelper } from '../store-helper';
 import {Params, ActivatedRoute} from "@angular/router";
 import { Subscription } from 'rxjs/Subscription';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   // The selector is what angular internally uses
@@ -45,7 +46,8 @@ export class HomeComponent {
               private route: ActivatedRoute,
               private store: Store,
               private storeHelper: StoreHelper,
-              private oauthService: OAuthService) {
+              private oauthService: OAuthService,
+              private sanitizer:DomSanitizer) {
   }
 
   ngOnInit() {
@@ -129,6 +131,13 @@ export class HomeComponent {
     });
   }
 
-
+  /**
+   * Sanitize url, to avoid Angular2 adding 'unsafe' to url
+   * @param url
+   * @returns {SafeUrl}
+   */
+  sanitize(url:string){
+    return this.sanitizer.bypassSecurityTrustUrl(url);
+  }
 
 }
