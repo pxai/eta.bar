@@ -155,9 +155,10 @@ module.exports = function (env) {
         output: {
           comments: false
         }, //prod
-        mangle: {
-          screw_ie8: true
-        }, //prod
+        mangle: false,
+        // mangle: {
+        //   screw_ie8: true
+        // }, //prod
         compress: {
           screw_ie8: true,
           warnings: false,
@@ -229,10 +230,10 @@ module.exports = function (env) {
        * See: https://github.com/webpack/compression-webpack-plugin
        */
       //  install compression-webpack-plugin
-      // new CompressionPlugin({
-      //   regExp: /\.css$|\.html$|\.js$|\.map$/,
-      //   threshold: 2 * 1024
-      // })
+      //  new CompressionPlugin({
+      //    regExp: /\.css$|\.html$|\.js$|\.map$/,
+      //    threshold: 2 * 1024
+      //  }),
 
       /**
        * Plugin LoaderOptionsPlugin (experimental)
