@@ -3,7 +3,6 @@
  */
 
 const helpers = require('./helpers');
-const path = require('path');
 
 /**
  * Webpack Plugins
@@ -51,7 +50,7 @@ module.exports = function (options) {
       /**
        * Make sure root is src
        */
-      modules: [ path.resolve(__dirname, 'src'), 'node_modules' ]
+      modules: [helpers.root('src'), 'node_modules']
 
     },
 
@@ -59,22 +58,13 @@ module.exports = function (options) {
      * Options affecting the normal modules.
      *
      * See: http://webpack.github.io/docs/configuration.html#module
+     *
+     * 'use:' revered back to 'loader:' as a temp. workaround for #1188
+     * See: https://github.com/AngularClass/angular2-webpack-starter/issues/1188#issuecomment-262872034
      */
     module: {
 
       rules: [
-
-        /**
-         * Tslint loader support for *.ts files
-         *
-         * See: https://github.com/wbuchwalter/tslint-loader
-         */
-        {
-          enforce: 'pre',
-          test: /\.ts$/,
-          use: 'tslint-loader',
-          exclude: [helpers.root('node_modules')]
-        },
 
         /**
          * Source map loader support for *.js files
@@ -85,7 +75,7 @@ module.exports = function (options) {
         {
           enforce: 'pre',
           test: /\.js$/,
-          use: 'source-map-loader',
+          loader: 'source-map-loader',
           exclude: [
             // these packages have problems with their sourcemaps
             helpers.root('node_modules/rxjs'),
@@ -100,19 +90,24 @@ module.exports = function (options) {
          */
         {
           test: /\.ts$/,
-          use: 'awesome-typescript-loader',
-          query: {
-            // use inline sourcemaps for "karma-remap-coverage" reporter
-            sourceMap: false,
-            inlineSourceMap: true,
-            compilerOptions: {
+          use: [
+            {
+              loader: 'awesome-typescript-loader',
+              query: {
+                // use inline sourcemaps for "karma-remap-coverage" reporter
+                sourceMap: false,
+                inlineSourceMap: true,
+                compilerOptions: {
 
-              // Remove TypeScript helpers to be injected
-              // below by DefinePlugin
-              removeComments: true
+                  // Remove TypeScript helpers to be injected
+                  // below by DefinePlugin
+                  removeComments: true
 
-            }
-          },
+                }
+              },
+            },
+            'angular2-template-loader'
+          ],
           exclude: [/\.e2e\.ts$/]
         },
 
@@ -123,7 +118,7 @@ module.exports = function (options) {
          */
         {
           test: /\.json$/,
-          use: 'json-loader',
+          loader: 'json-loader',
           exclude: [helpers.root('src/index.html')]
         },
 
@@ -135,7 +130,7 @@ module.exports = function (options) {
          */
         {
           test: /\.css$/,
-          use: ['to-string-loader', 'css-loader'],
+          loader: ['to-string-loader', 'css-loader'],
           exclude: [helpers.root('src/index.html')]
         },
 
@@ -147,7 +142,7 @@ module.exports = function (options) {
          */
         {
           test: /\.html$/,
-          use: 'raw-loader',
+          loader: 'raw-loader',
           exclude: [helpers.root('src/index.html')]
         },
 
@@ -160,7 +155,7 @@ module.exports = function (options) {
         {
           enforce: 'post',
           test: /\.(js|ts)$/,
-          use: 'istanbul-instrumenter-loader',
+          loader: 'istanbul-instrumenter-loader',
           include: helpers.root('src'),
           exclude: [
             /\.(e2e|spec)\.ts$/,
@@ -208,34 +203,34 @@ module.exports = function (options) {
       new ContextReplacementPlugin(
         // The (\\|\/) piece accounts for path separators in *nix and Windows
         /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-        helpers.root('src') // location of your src
+        helpers.root('src'), // location of your src
+        {
+          // your Angular Async Route paths relative to this root directory
+        }
       ),
 
-       /**
+      /**
        * Plugin LoaderOptionsPlugin (experimental)
        *
        * See: https://gist.github.com/sokra/27b24881210b56bbaff7
        */
       new LoaderOptionsPlugin({
-        debug: true,
+        debug: false,
         options: {
-
-          /**
-           * Static analysis linter for TypeScript advanced options configuration
-           * Description: An extensible linter for the TypeScript language.
-           *
-           * See: https://github.com/wbuchwalter/tslint-loader
-           */
-          tslint: {
-            emitErrors: false,
-            failOnHint: false,
-            resourcePath: 'src'
-          },
-
+          // legacy options go here
         }
       }),
 
     ],
+
+    /**
+     * Disable performance hints
+     *
+     * See: https://github.com/a-tarasyuk/rr-boilerplate/blob/master/webpack/dev.config.babel.js#L41
+     */
+    performance: {
+      hints: false
+    },
 
     /**
      * Include polyfills or mocks for various node stuff
