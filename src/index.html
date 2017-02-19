@@ -8,8 +8,8 @@
   <link rel="alternate" type="application/rss+xml" title="eta.bar... RSS iturria" href="/rss" />
   <style>@import url('https://fonts.googleapis.com/css?family=Lobster');</style>
   <link href="assets/css/front.css" rel="stylesheet">
-  <meta name="description" content="<%= htmlWebpackPlugin.options.title %>">
-
+  <meta name="description" content="<%= htmlWebpackPlugin.options.description %>">
+  <meta name="keywords" content="<%= htmlWebpackPlugin.options.keywords %>">
   <% if (webpackConfig.htmlElements.headTags) { %>
   <!-- Configured Head Tags  -->
   <%= webpackConfig.htmlElements.headTags %>
