@@ -8,7 +8,7 @@
 var isloggedin = require('../middleware/isloggedin');
 var GoogleAuth = require('google-auth-library');
 var auth = new GoogleAuth;
-var CLIENT_ID = '615208896962-m7ete2bdf60trg5a90ar1daus4ebl014.apps.googleusercontent.com';
+var CLIENT_ID = '126838648966-q1ijfjc4bhlc60eqnliebiaq9rluklv1.apps.googleusercontent.com';
 
 module.exports = function (app) {
 
@@ -36,7 +36,7 @@ module.exports = function (app) {
             req.session.user = authData.given_name;
             req.session.login = authData.email;
             req.session.authData = req.body.idClaims;
-            console.log('created user: %s with id', authData.email, userid);
+            console.log('User is Valid (:D)  created user: %s with id', authData.email, userid);
 
             res.send({valid: true, userid: userid});
           }
