@@ -45,7 +45,6 @@ export class AppComponent {
   this.oauthService.loginUrl = "https://accounts.google.com/o/oauth2/v2/auth"; //Id-Provider?
   this.oauthService.redirectUri = window.location.origin + "";
   this.oauthService.clientId = "126838648966-q1ijfjc4bhlc60eqnliebiaq9rluklv1.apps.googleusercontent.com";
-    //this.oauthService.clientId = "615208896962-m7ete2bdf60trg5a90ar1daus4ebl014.apps.googleusercontent.com";
   this.oauthService.scope = "openid profile email";
   this.oauthService.issuer = "https://accounts.google.com";
   this.oauthService.oidc = true;
