@@ -1,5 +1,5 @@
 # eta.bar
-Sample project using Angular2 woth webpack
+Sample project using Angular2 with webpack
 
 Set index.html values with
 * config/webpack.common.js
