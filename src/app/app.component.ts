@@ -3,6 +3,7 @@
  */
 import { Component, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Router} from '@angular/router';
 import { OAuthService } from 'angular2-oauth2/oauth-service';
 
 import { AppState } from './app.service';
@@ -37,7 +38,8 @@ export class AppComponent {
    // public appState: AppState,
     public storeHelper: StoreHelper,
     public store: Store,
-    public route: ActivatedRoute,
+    public activatedRoute: ActivatedRoute,
+    public router: Router,
     private oauthService: OAuthService,
     private authService: AuthService,
    public snackBar: MdSnackBar) {
@@ -118,6 +120,10 @@ console.log(this);
     let config = new MdSnackBarConfig();
     //config.duration = this.autoHide;
     this.snackBar.open(message, '' && '', config);
+  }
+
+  create() {
+    this.router.navigate(['create']);
   }
 }
 

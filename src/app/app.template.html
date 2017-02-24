@@ -6,6 +6,7 @@
    <div>
     <span *ngIf="store.getState().session != null" class="fill-remain">
       <i><span i18n>Kaixo</span>, {{ store.getState().session.given_name }}!</i>
+                <button md-mini-fab aria-label="Login" color="primary" (click)="create()"><md-icon>add</md-icon></button>
                   <button md-mini-fab aria-label="Login" color="primary"(click)="logout()"><md-icon>exit_to_app</md-icon></button>
      </span>
      <span *ngIf="store.getState().session == null" class="fill-remain" >
