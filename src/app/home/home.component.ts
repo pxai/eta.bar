@@ -95,6 +95,7 @@ export class HomeComponent {
           console.log('Home comoponent, store changed: ' + data.question._id);
           console.log(data.question);
           this.question = data.question;
+          //document.body.style.backgroundImage = "url(https://s3.amazonaws.com/elasticbeanstalk-us-east-1-986876950425/etabar/backgrounds/background-1.png)";
       });
   }
 

@@ -27,6 +27,7 @@ div.percentage {
   padding: 0.4em;
   float: left;
   font-family: 'Lobster',Helvetica, sans-serif;
+  text-shadow: -1px -1px white, 1px 1px #333;
 }
 
 .questionText {
@@ -38,6 +39,7 @@ div.percentage {
   float: left;
   font-size: 1.2em;
   font-family: 'Lobster',Helvetica, sans-serif;
+  text-shadow: -1px -1px white, 1px 1px #333;
 }
 
 .progress-bar  .bar {
