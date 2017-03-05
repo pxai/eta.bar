@@ -1,7 +1,6 @@
 html, body {
   margin: 0;
   padding: 0;
-  background-image: url(../assets/img/background-7.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   font-family: Arial, Helvetica, sans-serif;
@@ -67,6 +66,14 @@ footer, footer a {
   font-family: 'Lobster', Helvetica, sans-serif;
   text-shadow: -1px -1px white, 1px 1px #333;
   font-size: 2em;
+}
+
+#tags {
+  text-align: center;
+  font-family: 'Lobster', Helvetica, sans-serif;
+  text-shadow: -1px -1px white, 1px 1px #333;
+  font-size: 0.9em;
+  width: 100%;
 }
 
 button.answer {

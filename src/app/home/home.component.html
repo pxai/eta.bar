@@ -10,8 +10,11 @@
                 {{ answer.answer }}
               </button>
           </p>
+
           </div>
+
         </div>
+        <div id="tags"><md-icon><i class="material-icons">label</i></md-icon>{{ tags }}</div>
         <div class='shadow-2' *ngIf="format != 'normal'">
           <votebars [totalPercentage]="this.votesPercentage" [questions]="this.question.answers" totalVotes="{{totalVotes}}"></votebars>
         </div>

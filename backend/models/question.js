@@ -18,7 +18,9 @@ var schema = mongoose.Schema({
        answer: { type: String, required: true, trim: true},
      }
     ],
- 	createdAt	 : {type: Date, default: Date.now} // Fecha de creación
+ 	createdAt	 : {type: Date, default: Date.now}, // Fecha de creación
+  tags: [ {type: String} ],
+  image: { type: String, required: true, trim: true}
 });
 
 // add created date property
