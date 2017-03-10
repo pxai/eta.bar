@@ -4,7 +4,6 @@ import { AppState } from '../app.service';
 import { Title } from './title';
 import { QuestionService } from './question';
 import { CommentService } from '../comment/comment.service';
-import { XLarge } from './x-large';
 import { OAuthService } from 'angular2-oauth2/oauth-service';
 import { Store } from '../app.store';
 import { StoreHelper } from '../store-helper';
@@ -76,18 +75,6 @@ export class HomeComponent {
      // .subscribe((hero: Hero) => this.hero = hero);
 
     console.log("Question" + this.questionName);
-
-    // We get the latests and we just subscribe
-    // this.questionService.getLatest().subscribe((data: any) =>  {
-    //   console.log('First request: ');
-    //   console.log(data);
-    //   if (data.session != null) {
-    //     this.storeHelper.update('session', data.session);
-    //     console.log('Previous session recovered ');
-    //   } else {
-    //     console.log('No session stablished');
-    //   }
-    // });
 
     // subscribe to the store, so other operations just need to subscribe
     this.store.changes //.pluck('question')
