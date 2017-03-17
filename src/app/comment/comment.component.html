@@ -10,7 +10,7 @@
   <div id="commentscontent">
     <div *ngIf="store.getState().session != null" class="main-application centerdiv">
 
-      <div *ngIf="toggleComment==true">
+      <div *ngIf="toggleComment==true" id="newcomment">
         <form (ngSubmit)="submitComment()" autocomplete="off">
           <div>
           <md-textarea
@@ -42,16 +42,16 @@
 
 </div>
 
-<div  *ngFor="let comment of this.comments">
+<div  *ngFor="let comment of this.comments; let i = index">
   <md-card class="comment">
     <md-card-content>
+      <div><strong>#{{i}} {{ comment.login }}</strong></div>
       <md-icon>perm_identity</md-icon>
       <!--img src="" align="left" class="avatar" alt="{{ comment.login }}'s Avatar" title="{{ comment.login }}'s Avatar" /-->
       {{ comment.text }}
     </md-card-content>
     <md-card-subtitle>
       {{ comment.createdAt }}
-      <strong>{{ comment.login }}</strong>
   </md-card-subtitle>
   </md-card>
 </div>

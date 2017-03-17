@@ -58,7 +58,7 @@ module.exports = function (app) {
       function(err, question) {
         if (err) { res.send('{"result":"error"}'); }
         else {
-          Comment.find({questionid: question._id}, {}, {sort: {createdAt: -1}, limit: 10},
+          Comment.find({questionid: question._id}, {}, {sort: {createdAt: 1}, limit: 10},
             function (err, result) {
               if (err) { res.send('{"result":"error"}'); }
               var comments = result || [];

@@ -7,7 +7,7 @@ import { CommentService } from '../comment/comment.service';
 import { OAuthService } from 'angular2-oauth2/oauth-service';
 import { Store } from '../app.store';
 import { StoreHelper } from '../store-helper';
-import {Params, ActivatedRoute} from "@angular/router";
+import { Params, ActivatedRoute } from "@angular/router";
 import { Subscription } from 'rxjs/Subscription';
 import {DomSanitizer} from '@angular/platform-browser';
 
