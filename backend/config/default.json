@@ -3,5 +3,10 @@
   "port" : "3001",
   "dbhost" : "localhost",
   "dbport" : 27017,
-  "mongoUrl" : "mongodb://localhost/etabar"
+  "mongoUrl" : "mongodb://localhost/etabar",
+  "mongoOptions": { "server": {
+      "reconnectTries": 1000000,
+      "reconnectInterval": 1000
+    }
+  }
 }

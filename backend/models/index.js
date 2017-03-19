@@ -9,7 +9,7 @@
 var mongoose = require('mongoose');
 var config = require('config');
 //mongoose.connect('mongodb://localhost/etabar');
-mongoose.connect(config.mongoUrl);
+mongoose.connect(config.mongoUrl, config.mongoOptions);
 
 exports.User = require('./user');
 exports.Vote = require('./vote');
