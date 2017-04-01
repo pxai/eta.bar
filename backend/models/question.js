@@ -10,16 +10,29 @@ var vote = require('./vote');
 
 
 var schema = mongoose.Schema({
-    question: { type: String, required: true, trim: true},
+    question: [
+        {
+          lang: {type: String, required: true, lowercase: true, trim: true},
+          question: {type: String, required: true, trim: true}
+        }
+      ],
     type: { type: String, required: true, lowercase: true, trim: true},
     answers: [
-     {
-       answerid: {type: Number},
-       answer: { type: String, required: true, trim: true},
-     }
+      { lang : {type: String, required: true, lowercase: true, trim: true},
+        answers:
+        {
+         id: {type: Number},
+         answer: { id: {type: Number} ,answer :{type: String, required: true, trim: true}},
+        }
+      }
     ],
  	createdAt	 : {type: Date, default: Date.now}, // Fecha de creación
-  tags: [ {type: String} ],
+  tags: [
+    {
+      lang : {type: String, required: true, lowercase: true, trim: true},
+      tags : [ {type: String, required: true, lowercase: true, trim: true} ]
+      }
+    ],
   image: { type: String, required: true, trim: true}
 });
 

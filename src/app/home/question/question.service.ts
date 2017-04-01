@@ -19,11 +19,14 @@ export class QuestionService {
     ]
   }];
 
+
   //private questionGetUrl : string = '/assets/question.json';
   private questionGetUrl : string = '/api/v1/question/';
   private resultGetUrl : string = '/api/v1/question/vote';
   private resultAnonymousGetUrl : string = '/api/v1/question/anonymous/vote';
   private lastQuestionsGetUrl : string = '/api/v1/question/latest';
+  private currentQuestion;
+  private lang: string = 'eu';
 
   constructor(private http: Http, private storeHelper: StoreHelper) {
 
@@ -38,7 +41,15 @@ export class QuestionService {
      return this.http.get(this.questionGetUrl)
                                 .map(res => res.json())
                                 .do( (data: any) => {
-                                    this.storeHelper.update('question', data.question);
+                                   console.log(data);
+                                  for (let question of data[0].question) {
+                                    if (question.lang == this.lang) {
+                                      this.storeHelper.update('question', question);
+                                      console.log('stored ' + this.lang);
+                                      break;
+                                    }
+                                  }
+                                   // this.storeHelper.update('question', data.question);
                                     this.storeHelper.update('comments', data.comments);
                                     if (data.comments.length > 0) {
                                       this.storeHelper.update('firstComment', data.comments[0].createdAt);

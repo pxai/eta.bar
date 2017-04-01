@@ -25,9 +25,10 @@ var question = { "question" :  "What is the meaning of life",
 var anonymousUser = new User({userid: "1", name: 'Sample', salt : 'Salty salt', hash: 'superbhash', provider: 'myself', provider_id: "1"});
 module.exports = function (app) {
 
-    app.get('/api/v1/question/last' ,function(req, res) {
+    app.get(['/api/v1/question/last','/api/v1/question/last/:lang'] ,function(req, res) {
       req.session.user =  !req.session.user?anonymousUser:req.session.user;
-
+      let lang = req.params.lang || 'eu';
+      console.log('Lang: ' + lang);
       Question.findOne({},{},{sort: {createdAt: -1}},
         function(err, question) {
           if (err) { res.send('{"result":"error"}'); }
@@ -43,6 +44,7 @@ module.exports = function (app) {
                   console.log('SESSION NULL??');
                   console.log(req.session.authData);
                 }
+                console.log(question);
                 console.log('Loaded comments: ' + comments.length);
                 res.send({question: question, comments: comments, session : session});
               });

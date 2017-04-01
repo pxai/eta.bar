@@ -1,0 +1,25 @@
+
+var doc = { "_id" : ObjectId("58644c0c9af71ef4df1c095a"),
+  "question" : [
+    {"lang":"eu","question": "Zein da bizitzaren zentzua"},
+    {"lang":"es","question" : "cuál es el sentido de la vida"},
+    {"lang":"en","question" : "what is the meaning of life" }
+],
+  "permalink" : "meaning-of-life",
+  "type" : "normal",
+  "answers" :
+    [
+     {"lang":"eu","answers": [{"id":0, "answer":"Zein da bizitzaren zentzua"},{"id":1, "answer":"Zein da bizitzaren zentzua"},{"id":2, "answer":"Zein da bizitzaren zentzua"},{"id":3, "answer":"Zein da bizitzaren zentzua"}]},
+     {"lang":"es","answers": [{"id":0, "answer":"Zein da bizitzaren zentzua es"},{"id":1, "answer":"Zein da bizitzaren zentzua es"},{"id":2, "answer":"Zein da bizitzaren zentzua es"},{"id":3, "answer":"Zein da bizitzaren zentzua es"}]},
+     {"lang":"en","answers": [{"id":0, "answer":"Zein da bizitzaren zentzua en"},{"id":1, "answer":"Zein da bizitzaren zentzua en"},{"id":2, "answer":"Zein da bizitzaren zentzua en"},{"id":3, "answer":"Zein da bizitzaren zentzua en"}]}
+    ]
+   ,
+  "createdAt" : ISODate("2016-12-28T23:34:33.180Z"), "image" : "https://s3.amazonaws.com/elasticbeanstalk-us-east-1-986876950425/etabar/backgrounds/background-1.png",
+  "tags" : [
+    { "lang":"eu", "tags" : [ "aaaeu", "bbdeu", "cdceu" ]},
+    { "lang":"es", "tags" : [ "aaadw", "bbdbw", "cdccw" ]},
+    { "lang":"en", "tags" : [ "aaadn", "bbdbn", "cdccn" ]}
+  ]
+};
+db.questions.remove({});
+db.questions.insert(doc);
