@@ -41,15 +41,7 @@ export class QuestionService {
      return this.http.get(this.questionGetUrl)
                                 .map(res => res.json())
                                 .do( (data: any) => {
-                                   console.log(data);
-                                  for (let question of data[0].question) {
-                                    if (question.lang == this.lang) {
-                                      this.storeHelper.update('question', question);
-                                      console.log('stored ' + this.lang);
-                                      break;
-                                    }
-                                  }
-                                   // this.storeHelper.update('question', data.question);
+                                    this.storeHelper.update('question', data.question);
                                     this.storeHelper.update('comments', data.comments);
                                     if (data.comments.length > 0) {
                                       this.storeHelper.update('firstComment', data.comments[0].createdAt);

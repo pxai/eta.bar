@@ -7,7 +7,7 @@
           <div>
           <p  *ngFor="let answer of this.question.answers">
               <button class="answer" id="submit-button" md-raised-button color="" (click)="voteFor(this.question._id,answer)">
-                {{ answer.answer.eu }}
+                {{ answer.answer }}
               </button>
           </p>
 

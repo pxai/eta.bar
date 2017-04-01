@@ -38,6 +38,7 @@ export class HomeComponent {
   public questionName = '';
   public tags = '';
   private sub: Subscription;
+  private lang : string = 'eu';
 
   // TypeScript public modifiers
   constructor(public appState: AppState, public title: Title,
@@ -83,6 +84,17 @@ export class HomeComponent {
           console.log('Home comoponent, store changed: ' + data.question._id);
           console.log(data.question);
           this.question = data.question;
+
+          for (let i in data.question.question) {
+            if (data.question.question[i].lang == this.lang) {
+                this.question.question = data.question.question[i].question;
+                this.question.answers = data.question.answers[i].answers;
+                this.question.tags = data.question.tags[i].tags;
+            }
+              console.log(data.question.question[i].lang); // "0", "1", "2",
+          }
+
+          //this.question = data.question;
           this.tags = data.question.tags;
           this.format= 'normal';
           document.body.style.backgroundImage = "url("+data.question.image+")";
