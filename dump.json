@@ -25,3 +25,58 @@ var doc = { "_id" : ObjectId("58644c0c9af71ef4df1c095a"),
 };
 db.questions.remove({});
 db.questions.insert(doc);
+
+
+var doc = { "_id" : ObjectId("5897bc40734d1d434757900a"),
+"question" : [
+{"lang":"eu","question": "Zein da bizitzaren zentzua"},
+{"lang":"es","question" : "Cuál es el sentido de la vida"},
+{"lang":"en","question" : "What is the meaning of life" }
+],
+"permalink" : "meaning-of-life",
+"description" : "Gizakiok beti jakin izan nahi dugu zein den bizitzaren zentzua, baina jakitea ez da erraza",
+"url" : "http://www.google.es",
+"type" : "normal",
+"answers" :
+[
+{"lang":"eu","answers": [{"id":0, "answer":"Ezer ere ez"},{"id":1, "answer":"42"},{"id":2, "answer":"Bizi eta bizitzen utzi"},{"id":3, "answer":"Ihes egin"}]},
+{"lang":"es","answers": [{"id":0, "answer":"Nada de nada"},{"id":1, "answer":"42"},{"id":2, "answer":"Vive y deja vivir"},{"id":3, "answer":"Huye por tu vida"}]},
+{"lang":"en","answers": [{"id":0, "answer":"Nothing at all"},{"id":1, "answer":"42"},{"id":2, "answer":"Live and let live"},{"id":3, "answer":"Run for your life"}]}
+]
+,
+"createdAt" : ISODate("2016-12-28T23:34:33.180Z"), "image" : "https://s3.amazonaws.com/elasticbeanstalk-us-east-1-986876950425/etabar/backgrounds/background-1.png",
+"tags" : [
+{ "lang":"eu", "tags" : [ "bizitza", "zentzua", "42" ]},
+{ "lang":"es", "tags" : [ "vida", "sentido", "42" ]},
+{ "lang":"en", "tags" : [ "life", "bbdbn", "42" ]}
+]
+};
+
+db.questions.insert(doc);
+
+var doc = { "_id" : ObjectId("58a0ff9e734d1d56393cd6b1"),
+"question" : [
+{"lang":"eu","question": "Zein da nahiago duzun programazio lengoaia?"},
+{"lang":"es","question" : "¿Cuál es tu lenguaje de programación preferido"},
+{"lang":"en","question" : "What is your preferred programming language?" }
+],
+"permalink" : "meaning-of-life",
+"description" : "Gizakiok beti jakin izan nahi dugu zein den bizitzaren zentzua, baina jakitea ez da erraza",
+"url" : "http://www.google.es",
+"type" : "normal",
+"answers" :
+[
+{"lang":"eu","answers": [{"id":0, "answer":"Ezer ere ez"},{"id":1, "answer":"42"},{"id":2, "answer":"Bizi eta bizitzen utzi"},{"id":3, "answer":"Ihes egin"}]},
+{"lang":"es","answers": [{"id":0, "answer":"Nada de nada"},{"id":1, "answer":"42"},{"id":2, "answer":"Vive y deja vivir"},{"id":3, "answer":"Huye por tu vida"}]},
+{"lang":"en","answers": [{"id":0, "answer":"Nothing at all"},{"id":1, "answer":"42"},{"id":2, "answer":"Live and let live"},{"id":3, "answer":"Run for your life"}]}
+]
+,
+"createdAt" : ISODate("2016-12-28T23:34:33.180Z"), "image" : "https://s3.amazonaws.com/elasticbeanstalk-us-east-1-986876950425/etabar/backgrounds/background-1.png",
+"tags" : [
+{ "lang":"eu", "tags" : [ "programazio", "lengoaia", "preferentziak" ]},
+{ "lang":"es", "tags" : [ "programación", "lenguaje", "preferencias" ]},
+{ "lang":"en", "tags" : ["programming","language","preferences"]}
+]
+};
+
+db.questions.insert(doc);
