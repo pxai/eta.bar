@@ -32,10 +32,10 @@ export class QuestionService {
 
   }
 
-  public getLatest(q: string ='') {
+  public getLatest(q: string ='', lang: string = 'eu') {
     console.log('Title#getData(): Get Latest from back-end');
 
-    this.questionGetUrl = '/api/v1/question/' + ((q!='')?'q/'+q:'last');
+    this.questionGetUrl = '/api/v1/question/' + ((q!='')?'q/'+q:'last' + '/' + lang);
     // We add the method to save question in the store.
     // The operation is immutable for data
      return this.http.get(this.questionGetUrl)
@@ -62,11 +62,11 @@ export class QuestionService {
   }
 
 
-  public getLatestQuestions(skip: number = 0) {
+  public getLatestQuestions(skip: number = 0, lang: string = 'eu') {
     console.log('Get Latest questions');
     //var headers = new Headers();
     //headers.append('Content-type','application/json');
-    return this.http.get(this.lastQuestionsGetUrl+"/"+skip)
+    return this.http.get(this.lastQuestionsGetUrl+"/"+skip+"/"+lang)
       .map(res => res.json());
 
   }

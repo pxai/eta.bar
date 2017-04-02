@@ -11,8 +11,9 @@ import { DataResolver } from './app.resolver';
 
 export const ROUTES: Routes = [
   { path: '',      component: HomeComponent },
-  { path: 'home',  component: HomeComponent },
-  { path: 'question/:q',  component: HomeComponent },
+  { path: ':lang',      component: HomeComponent },
+  { path: 'home/:lang',  component: HomeComponent },
+  { path: 'question/:q/:lang',  component: HomeComponent },
   { path: 'state',    component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'create', component: CreateComponent },

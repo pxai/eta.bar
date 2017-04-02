@@ -61,7 +61,7 @@ export class HomeComponent {
 
 
     this.route.params
-        .subscribe((params: Params) => (this.questionService.getLatest(params['q']))
+        .subscribe((params: Params) => (this.questionService.getLatest(params['q'],params['lang']))
         .subscribe((data: any) =>  {
           console.log('First request: ');
           console.log(data);
@@ -73,6 +73,8 @@ export class HomeComponent {
           }
         })
         );
+    this.route.params
+      .subscribe((params: Params) => { this.lang = params['lang'] || 'eu';});
      // .subscribe((hero: Hero) => this.hero = hero);
 
     console.log("Question" + this.questionName);
@@ -89,13 +91,10 @@ export class HomeComponent {
             if (data.question.question[i].lang == this.lang) {
                 this.question.question = data.question.question[i].question;
                 this.question.answers = data.question.answers[i].answers;
-                this.question.tags = data.question.tags[i].tags;
+                this.tags = data.question.tags[i].tags;
+                break;
             }
-              console.log(data.question.question[i].lang); // "0", "1", "2",
           }
-
-          //this.question = data.question;
-          this.tags = data.question.tags;
           this.format= 'normal';
           document.body.style.backgroundImage = "url("+data.question.image+")";
       });

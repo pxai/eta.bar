@@ -6,12 +6,14 @@ var doc = { "_id" : ObjectId("58644c0c9af71ef4df1c095a"),
     {"lang":"en","question" : "what is the meaning of life" }
 ],
   "permalink" : "meaning-of-life",
+  "description" : "Gizakiok beti jakin izan nahi dugu zein den bizitzaren zentzua, baina jakitea ez da erraza",
+  "url" : "http://www.google.es",
   "type" : "normal",
   "answers" :
     [
-     {"lang":"eu","answers": [{"id":0, "answer":"Zein da bizitzaren zentzua"},{"id":1, "answer":"Zein da bizitzaren zentzua"},{"id":2, "answer":"Zein da bizitzaren zentzua"},{"id":3, "answer":"Zein da bizitzaren zentzua"}]},
-     {"lang":"es","answers": [{"id":0, "answer":"Zein da bizitzaren zentzua es"},{"id":1, "answer":"Zein da bizitzaren zentzua es"},{"id":2, "answer":"Zein da bizitzaren zentzua es"},{"id":3, "answer":"Zein da bizitzaren zentzua es"}]},
-     {"lang":"en","answers": [{"id":0, "answer":"Zein da bizitzaren zentzua en"},{"id":1, "answer":"Zein da bizitzaren zentzua en"},{"id":2, "answer":"Zein da bizitzaren zentzua en"},{"id":3, "answer":"Zein da bizitzaren zentzua en"}]}
+     {"lang":"eu","answers": [{"id":0, "answer":"Ez dakit"},{"id":1, "answer":"Auskalo"},{"id":2, "answer":"42a"},{"id":3, "answer":"Pikutara"}]},
+     {"lang":"es","answers": [{"id":0, "answer":"No sé es"},{"id":1, "answer":"A saber"},{"id":2, "answer":"42"},{"id":3, "answer":"A tomar viento"}]},
+     {"lang":"en","answers": [{"id":0, "answer":"I do not know en"},{"id":1, "answer":"Who knows"},{"id":2, "answer":"42"},{"id":3, "answer":"Good riddance"}]}
     ]
    ,
   "createdAt" : ISODate("2016-12-28T23:34:33.180Z"), "image" : "https://s3.amazonaws.com/elasticbeanstalk-us-east-1-986876950425/etabar/backgrounds/background-1.png",
