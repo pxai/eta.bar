@@ -9,13 +9,15 @@ import { QuestionService } from './question.service';
 export class LastQuestionsComponent {
   @Input()
   skip: number = 0;
-  lang: string = 'eu';
+  @Input()
+  lang: string;
 
   questions = [];
 
   constructor(private questionService: QuestionService) {
-
-    this.questionService.getLatestQuestions(this.skip).subscribe(data => {
+  }
+  ngOnInit() {
+    this.questionService.getLatestQuestions(this.skip, this.lang).subscribe(data => {
       console.log('Ok, latest questions received.' );
       console.log(data);
 

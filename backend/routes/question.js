@@ -29,7 +29,7 @@ module.exports = function (app) {
       req.session.user =  !req.session.user?anonymousUser:req.session.user;
       let lang = req.params.lang || 'eu';
       console.log('Lang: ' + lang);
-      Question.findOne({},{},{sort: {createdAt: -1}},
+      Question.findOne({"question.lang": lang},{},{sort: {createdAt: -1}},
         function(err, question) {
           if (err) { res.send('{"result":"error"}'); }
           else {
@@ -57,7 +57,7 @@ module.exports = function (app) {
     req.session.user =  !req.session.user?anonymousUser:req.session.user;
     console.log('Question : ' + req.params.question);
     let lang = req.params.lang || 'eu';
-    Question.findOne({permalink: req.params.question},{},{sort: {createdAt: -1}},
+    Question.findOne({permalink: req.params.question, "question.lang": lang},{},{sort: {createdAt: -1}},
       function(err, question) {
         if (err) { res.send('{"result":"error"}'); }
         else {
@@ -232,11 +232,11 @@ module.exports = function (app) {
   });
 
 
-  app.get(['/api/v1/question/latest/:skip','/api/v1/question/latest/:skip/:lang'] ,function(req, res) {
+  app.get('/api/v1/question/latest/:skip/:lang',function(req, res) {
 
-    var skip = req.params.skip || 0;
-    var lang = req.params.lang || 'eu';
-    Question.find({},{question:1, permalink:1, createdAt:1},{sort: {createdAt: -1}, limit: 10},
+    let skip = req.params.skip || 0;
+    let lang = req.params.lang || 'en';
+    Question.find({"question.lang": lang},{question:1, permalink:1, createdAt:1},{sort: {createdAt: -1}, limit: 10},
       function(err, questions) {
         if (err) { res.send('{"result":"error"}'); }
         else {

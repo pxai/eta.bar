@@ -33,7 +33,7 @@ export class QuestionService {
   }
 
   public getLatest(q: string ='', lang: string = 'eu') {
-    console.log('Title#getData(): Get Latest from back-end');
+    console.log('Title#getData(): Get Latest from back-end ' + lang);
 
     this.questionGetUrl = '/api/v1/question/' + ((q!='')?'q/'+q:'last' + '/' + lang);
     // We add the method to save question in the store.
@@ -62,8 +62,7 @@ export class QuestionService {
   }
 
 
-  public getLatestQuestions(skip: number = 0, lang: string = 'eu') {
-    console.log('Get Latest questions');
+  public getLatestQuestions(skip: number = 0, lang: string) {
     //var headers = new Headers();
     //headers.append('Content-type','application/json');
     return this.http.get(this.lastQuestionsGetUrl+"/"+skip+"/"+lang)

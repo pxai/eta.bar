@@ -38,7 +38,7 @@ export class HomeComponent {
   public questionName = '';
   public tags = '';
   private sub: Subscription;
-  private lang : string = 'eu';
+  public lang : string = 'eu';
 
   // TypeScript public modifiers
   constructor(public appState: AppState, public title: Title,
@@ -74,7 +74,7 @@ export class HomeComponent {
         })
         );
     this.route.params
-      .subscribe((params: Params) => { this.lang = params['lang'] || 'eu';});
+      .subscribe((params: Params) => { this.lang = params['lang'] || 'eu';console.log('LANG: ' + this.lang);});
      // .subscribe((hero: Hero) => this.hero = hero);
 
     console.log("Question" + this.questionName);
