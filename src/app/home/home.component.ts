@@ -91,7 +91,7 @@ export class HomeComponent {
             if (data.question.question[i].lang == this.lang) {
                 this.question.question = data.question.question[i].question;
                 this.question.answers = data.question.answers[i].answers;
-                this.tags = data.question.tags[i].tags;
+                this.question.tags = this.tags = data.question.tags[i].tags;
                 break;
             }
           }
