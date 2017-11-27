@@ -12,7 +12,7 @@ var mongoose = require('mongoose');
 var morgan = require('morgan');
 const MongoStore = require('connect-mongo')(expressSession);
 
-
+const PORT = process.env.PORT || config.port || 5000
 
 
 
@@ -55,6 +55,6 @@ routes(app);
 app.use(express.static('../dist'));
 
 // And there we go, listening on port 3000
-app.listen(config.port, function () {
-    console.log('Starting ' + config.appName + '. Now listening on http://localhost:' + config.port + ' dirname: ' + __dirname);
+app.listen(PORT, function () {
+    console.log('Starting ' + config.appName + '. Now listening on http://localhost:' + PORT + ' dirname: ' + __dirname);
 });
