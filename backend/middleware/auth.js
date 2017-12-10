@@ -4,10 +4,6 @@ var User = require('../models/user.js'),
 	FacebookStrategy = require('passport-facebook').Strategy,
 	GoogleStrategy = require('passport-google-oauth').OAut2Strategy;
 
-const FACEBOOK_APPID = process.env.FACEBOOK_APPID || config.facebook[env].appId
-const FACEBOOK_APPSECRET = process.env.FACEBOOK_APPSECRET || config.facebook[env].appSecret
-const GOOGLE_APPID = process.env.GOOGLE_APPID || config.google[env].appId
-const GOOGLE_APPSECRET = process.env.GOOGLE_APPSECRET || config.google[env].appSecret
 
 	passport.serializeUser(function(user, done){
 		//done(null, user._id);
@@ -37,6 +33,11 @@ module.exports = function(app, options){
 					var env = app.get('env');
 					var config = options.providers;
 
+					const FACEBOOK_APPID = process.env.FACEBOOK_APPID || config.facebook[env].appId
+					const FACEBOOK_APPSECRET = process.env.FACEBOOK_APPSECRET || config.facebook[env].appSecret
+					const GOOGLE_APPID = process.env.GOOGLE_APPID || config.google[env].appId
+					const GOOGLE_APPSECRET = process.env.GOOGLE_APPSECRET || config.google[env].appSecret
+					
 					// configure Facebook strategy
 					passport.use(new FacebookStrategy({
 						clientID: FACEBOOK_APPID,
