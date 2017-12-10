@@ -2,7 +2,12 @@
 var User = require('../models/user.js'),
 	passport = require('passport'),
 	FacebookStrategy = require('passport-facebook').Strategy,
-	GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+	GoogleStrategy = require('passport-google-oauth').OAut2Strategy;
+
+const FACEBOOK_APPID = process.env.FACEBOOK_APPID || config.facebook[env].appId
+const FACEBOOK_APPSECRET = process.env.FACEBOOK_APPSECRET || config.facebook[env].appSecret
+const GOOGLE_APPID = process.env.GOOGLE_APPID || config.google[env].appId
+const GOOGLE_APPSECRET = process.env.GOOGLE_APPSECRET || config.google[env].appSecret
 
 	passport.serializeUser(function(user, done){
 		//done(null, user._id);
@@ -23,10 +28,10 @@ module.exports = function(app, options){
 // set some reasonable defaults
 		if(!options.successRedirect)
 			options.successRedirect = '/account';
-		
+
 		if(!options.failureRedirect)
 			options.failureRedirect = '/login';
-		
+
 		return {
 				init: function() {
 					var env = app.get('env');
@@ -34,8 +39,8 @@ module.exports = function(app, options){
 
 					// configure Facebook strategy
 					passport.use(new FacebookStrategy({
-						clientID: config.facebook[env].appId,
-						clientSecret: config.facebook[env].appSecret,
+						clientID: FACEBOOK_APPID,
+						clientSecret: FACEBOOK_APPSECRET,
 						callbackURL: '/auth/facebook/callback',
 						}, function(accessToken, refreshToken, profile, done){
 							var authId = 'facebook:' + profile.id;
@@ -61,14 +66,14 @@ module.exports = function(app, options){
 					//   credentials (in this case, an accessToken, refreshToken, and Google
 					//   profile), and invoke a callback with a user object.
 					passport.use(new GoogleStrategy({
-					    clientID: config.google[env].appId,
-					    clientSecret: config.google[env].appSecret,
+					    clientID: GOOGLE_APPID,
+					    clientSecret: GOOGLE_APPSECRET,
 					    callbackURL: "http://localhost:3000/auth/google/callback"
 					  },
 					  function(accessToken, refreshToken, profile, done) {
 					    // asynchronous verification, for effect...
 				    process.nextTick(function () {
-      
+
 				      // To keep the example simple, the user's Google profile is returned to
 				      // represent the logged-in user.  In a typical application, you would want
 				      // to associate the Google account with a user record in your database,
@@ -76,7 +81,7 @@ module.exports = function(app, options){
 					console.log(profile);
 				      	return done(null, profile);
 				    	});
-				     }  
+				     }
 				  ));
 
 					app.use(passport.initialize());
@@ -113,7 +118,7 @@ module.exports = function(app, options){
 						//   request.  If authentication fails, the user will be redirected back to the
 						//   login page.  Otherwise, the primary route function function will be called,
 						//   which, in this example, will redirect the user to the home page.
-					app.get('/auth/google/callback', 
+					app.get('/auth/google/callback',
 						  passport.authenticate('google', { failureRedirect: '/login' }),
 						  function(req, res) {
 						    res.redirect('/');
@@ -121,8 +126,3 @@ module.exports = function(app, options){
 				}
 		};
 };
-
-
-
-
-
