@@ -1,5 +1,6 @@
 # eta.bar
-
+backend/config/credentials.js
+config/credentials.js
 # Logs
 logs
 *.log
